@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface ReviewService {
     List<ReviewDto> getAllReviewsByUserId(Long userId);
+    List<ReviewDto> getAllReviewsByBookId(Long bookId);
 
     @Transactional
     void addReview(ReviewDto reviewDto, Long userId);
