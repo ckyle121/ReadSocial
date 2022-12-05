@@ -24,7 +24,6 @@ public class Review {
     private Integer bookRating;
 
     // Associations
-
     @ManyToOne
     @JsonBackReference
     private User user;
