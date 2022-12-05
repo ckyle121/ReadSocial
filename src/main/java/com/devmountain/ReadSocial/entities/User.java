@@ -1,5 +1,6 @@
 package com.devmountain.ReadSocial.entities;
 
+import com.devmountain.ReadSocial.dtos.UserDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +30,13 @@ public class User {
     @JsonBackReference
     private Set<Review> reviewSet = new HashSet<>();
 
+    public User(UserDto userDto){
+        if (userDto.getUsername() != null){
+            this.username = userDto.getUsername();
+        }
+        if (userDto.getPassword() != null){
+            this.password = userDto.getPassword();
+        }
+    }
 
 }
