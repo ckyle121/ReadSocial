@@ -38,16 +38,17 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public void addBook(BookDto bookDto, Long userId) {
-        // Optional<User> userOptional = userRepository.findById(userId);
-        // Book book = new Book(bookDto);
-        // userOptional.ifPresent(book::setUser);
-        // bookRepository.saveAllAndFlush(book);
+         Optional<User> userOptional = userRepository.findById(userId);
+         Book book = new Book(bookDto);
+         userOptional.ifPresent(book::setUser);
+         bookRepository.saveAndFlush(book);
     }
 
     @Override
     @Transactional
     public void deleteBookById(Long bookId) {
-
+        Optional<Book> bookOptional = bookRepository.findById(bookId);
+        bookOptional.ifPresent(book -> bookRepository.delete(book));
     }
 
     @Override
