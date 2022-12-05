@@ -23,10 +23,10 @@ public class UserServiceImpl {
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
         userRepository.saveAndFlush(user);
-        response.add("http://localhost:8080/login.html");
+        response.add("http://localhost:8080/home.html");
         return response;
     }
-    
+
     public List<String> userLogin(UserDto userDto){
         List<String> response = new ArrayList<>();
         Optional<User> userOptional = userRepository.findByUsername(userDto.getUsername());
