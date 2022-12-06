@@ -1,5 +1,6 @@
 package com.devmountain.ReadSocial.entities;
 
+import com.devmountain.ReadSocial.dtos.ReviewDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,4 +32,13 @@ public class Review {
     @ManyToOne
     @JsonBackReference
     private Book book;
+
+    public Review(ReviewDto reviewDto){
+        if (reviewDto.getReviewText() != null){
+            this.reviewText = reviewDto.getReviewText();
+        }
+        if (reviewDto.getBookRating() != null){
+            this.bookRating = reviewDto.getBookRating();
+        }
+    }
 }

@@ -45,13 +45,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional
-    public void deleteBookById(Long bookId) {
-        Optional<Book> bookOptional = bookRepository.findById(bookId);
-        bookOptional.ifPresent(book -> bookRepository.delete(book));
-    }
-
-    @Override
     public Optional<BookDto> getBookById(Long bookId) {
         Optional<Book> bookOptional = bookRepository.findById(bookId);
         if(bookOptional.isPresent()){

@@ -10,11 +10,5 @@ import java.util.Optional;
 public interface BookService {
     List<BookDto> getAllBooksByUserId(Long userId);
 
-    @Transactional
-    void addBook(BookDto bookDto, Long userId);
-
-    @Transactional
-    void deleteBookById(Long bookId);
-
     Optional<BookDto> getBookById(Long bookId);
 }

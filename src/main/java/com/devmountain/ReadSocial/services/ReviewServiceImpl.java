@@ -52,7 +52,7 @@ public class ReviewServiceImpl implements ReviewService {
         Optional<Book> bookOptional = bookRepository.findById(bookId);
         Review review = new Review(reviewDto);
         bookOptional.ifPresent(review::setBook);
-        reviewRepository.saveAndFlush(review);        
+        reviewRepository.saveAndFlush(review);
     }
 
     @Override
