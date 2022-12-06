@@ -2,6 +2,7 @@ package com.devmountain.ReadSocial.services;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
 import com.devmountain.ReadSocial.entities.Book;
+import com.devmountain.ReadSocial.entities.Review;
 import com.devmountain.ReadSocial.entities.User;
 import com.devmountain.ReadSocial.repositories.BookRepository;
 import com.devmountain.ReadSocial.repositories.ReviewRepository;
@@ -33,15 +34,6 @@ public class BookServiceImpl implements BookService {
             return bookList.stream().map(book -> new BookDto(book)).collect(Collectors.toList());
         }
         return Collections.emptyList();
-    }
-
-    @Override
-    @Transactional
-    public void addBook(BookDto bookDto, Long userId) {
-         Optional<User> userOptional = userRepository.findById(userId);
-         Book book = new Book(bookDto);
-         userOptional.ifPresent(book::setUser);
-         bookRepository.saveAndFlush(book);
     }
 
     @Override

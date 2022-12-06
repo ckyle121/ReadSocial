@@ -24,13 +24,4 @@ public class BookController {
         return bookService.getBookById(bookId);
     }
 
-    @PostMapping("/user/{userId}")
-    public void addBook(@RequestBody BookDto bookDto, @PathVariable Long userId){
-        bookService.addBook(bookDto, userId);
-    }
-
-    @DeleteMapping("/{bookId}")
-    public void deleteNoteById(@PathVariable Long bookId){
-        bookService.deleteBookById(bookId);
-    }
 }
