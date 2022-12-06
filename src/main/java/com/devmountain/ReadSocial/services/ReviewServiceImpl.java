@@ -46,12 +46,14 @@ public class ReviewServiceImpl implements ReviewService {
         return Collections.emptyList();
     }
 
-    @Override
+
     @Transactional
     public void addReview(ReviewDto reviewDto, Long bookId) {
         Optional<Book> bookOptional = bookRepository.findById(bookId);
+        //Optional<User> userOptional = userRepository.findById(userId);
         Review review = new Review(reviewDto);
         bookOptional.ifPresent(review::setBook);
+        //userOptional.ifPresent(review::setUser);
         reviewRepository.saveAndFlush(review);
     }
 

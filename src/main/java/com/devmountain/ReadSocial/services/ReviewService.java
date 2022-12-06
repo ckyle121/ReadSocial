@@ -11,7 +11,7 @@ public interface ReviewService {
     List<ReviewDto> getAllReviewsByBookId(Long bookId);
 
     @Transactional
-    void addReview(ReviewDto reviewDto, Long userId);
+    void addReview(ReviewDto reviewDto, Long bookId);
 
     @Transactional
     void deleteReviewById(Long reviewId);
