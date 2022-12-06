@@ -48,11 +48,11 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public void addReview(ReviewDto reviewDto, Long userId) {
-        Optional<User> userOptional = userRepository.findById(userId);
+    public void addReview(ReviewDto reviewDto, Long bookId) {
+        Optional<Book> bookOptional = bookRepository.findById(bookId);
         Review review = new Review(reviewDto);
-        userOptional.ifPresent(review::setUser);
-        reviewRepository.saveAndFlush(review);
+        bookOptional.ifPresent(review::setBook);
+        reviewRepository.saveAndFlush(review);        
     }
 
     @Override
