@@ -23,5 +23,4 @@ public class BookController {
     public Optional<BookDto> getBookById(@PathVariable Long bookId){
         return bookService.getBookById(bookId);
     }
-
 }
