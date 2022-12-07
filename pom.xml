@@ -50,11 +50,6 @@
 			<artifactId>spring-security-core</artifactId>
 			<version>5.5.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.github.jknack</groupId>
-			<artifactId>handlebars</artifactId>
-			<version>4.1.2</version>
-		</dependency>
 	</dependencies>
 
 	<build>

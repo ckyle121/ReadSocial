@@ -2,15 +2,20 @@ package com.devmountain.ReadSocial.services;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
 import com.devmountain.ReadSocial.entities.Book;
+import com.devmountain.ReadSocial.entities.Review;
+import com.devmountain.ReadSocial.entities.User;
 import com.devmountain.ReadSocial.repositories.BookRepository;
 import com.devmountain.ReadSocial.repositories.ReviewRepository;
 import com.devmountain.ReadSocial.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+import javax.transaction.Transactional;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-@Service
 public class BookServiceImpl implements BookService {
     @Autowired
     private UserRepository userRepository;
@@ -21,15 +26,15 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private ReviewRepository reviewRepository;
 
-//    @Override
-//    public List<BookDto> getAllBooksByUserId(Long userId){
-//        Optional<User> userOptional = userRepository.findById(userId);
-//        if(userOptional.isPresent()){
-//            List<Book> bookList = bookRepository.findAllByUserEquals(userOptional.get());
-//            return bookList.stream().map(book -> new BookDto(book)).collect(Collectors.toList());
-//        }
-//        return Collections.emptyList();
-//    }
+    @Override
+    public List<BookDto> getAllBooksByUserId(Long userId){
+        Optional<User> userOptional = userRepository.findById(userId);
+        if(userOptional.isPresent()){
+            List<Book> bookList = bookRepository.findAllByUserEquals(userOptional.get());
+            return bookList.stream().map(book -> new BookDto(book)).collect(Collectors.toList());
+        }
+        return Collections.emptyList();
+    }
 
     @Override
     public Optional<BookDto> getBookById(Long bookId) {

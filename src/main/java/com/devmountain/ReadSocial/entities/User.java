@@ -2,7 +2,6 @@ package com.devmountain.ReadSocial.entities;
 
 import com.devmountain.ReadSocial.dtos.UserDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,8 +26,8 @@ public class User {
     @Column
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonBackReference
     private Set<Review> reviewSet = new HashSet<>();
 
     public User(UserDto userDto){

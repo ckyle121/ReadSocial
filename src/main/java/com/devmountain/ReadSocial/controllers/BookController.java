@@ -14,10 +14,10 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-//    @GetMapping("/user/{userId}")
-//    public List<BookDto> getBooksByUser(@PathVariable Long userId){
-//        return bookService.getAllBooksByUserId(userId);
-//    }
+    @GetMapping("/user/{userId}")
+    public List<BookDto> getBooksByUser(@PathVariable Long userId){
+        return bookService.getAllBooksByUserId(userId);
+    }
 
     @GetMapping("/{bookId}")
     public Optional<BookDto> getBookById(@PathVariable Long bookId){
