@@ -239,7 +239,7 @@ h1:after {
   width: 300px;
 }
 
-#movielist {
+#booklist {
   display: flex;
 }
 
@@ -248,18 +248,18 @@ h1:after {
   color: #dabd18b2;
 }
 
-.movieListSingleEl {
+.bookListSingleEl {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 40%;
   margin: 10px;
 }
 
-.movieListSingleEl:hover {
+.bookListSingleEl:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.movieListSingleEl img {
+.bookListSingleEl img {
   width: 100%;
 }
 
@@ -346,7 +346,7 @@ h1:after {
 
 /* =========================== */
 
-/* ========Search Movie Cards============ */
+/* ========Search Book Cards============ */
 
 .UserCardContainer {
   /* position: absolute; */
@@ -429,9 +429,9 @@ h1:after {
 
 /* =============================== */
 
-/* =========Posted Movie Cards======== */
+/* =========Posted Book Cards======== */
 
-.movie-card {
+.book-card {
   max-width: 300px;
   max-height: 400px;
   background-color: #fff;
@@ -443,13 +443,13 @@ h1:after {
   cursor: pointer;
 }
 
-.movie-card img {
+.book-card img {
   transition: all 0.15s linear;
   max-width: 100%;
   max-height: 100%;
 }
 
-.movie-card .movie-title {
+.book-card .book-title {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -465,7 +465,7 @@ h1:after {
   transition: all 0.15s linear;
 }
 
-.movie-card .movie-position {
+.book-card .book-position {
   position: absolute;
   color: rgba(255, 255, 255, 0.4);
   left: 30px;
@@ -473,7 +473,7 @@ h1:after {
   transition: all 0.15s linear;
 }
 
-.movie-card .movie-overview {
+.book-card .book-overview {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -488,28 +488,28 @@ h1:after {
   transition: all 0.15s linear;
 }
 
-.movie-card .movie-overview h3 {
+.book-card .book-overview h3 {
   font-weight: bold;
 }
 
-/* .movie-card .movie-overview p {
+/* .book-card .book-overview p {
   color: rgba(255, 255, 255, 0.7);
 } */
 
-.movie-card:hover img {
+.book-card:hover img {
   filter: brightness(30%);
 }
 
-.movie-card:hover .movie-title {
+.book-card:hover .book-title {
   padding-left: 25px;
   padding-top: 20px;
 }
 
-.movie-card:hover .movie-position {
+.book-card:hover .book-position {
   left: 40px;
 }
 
-.movie-card:hover .movie-overview {
+.book-card:hover .book-overview {
   padding-bottom: 25px;
 }
 

@@ -2,6 +2,7 @@ package com.devmountain.ReadSocial.entities;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,11 +25,11 @@ public class Book {
     private String title;
 
     @Column(columnDefinition = "poster")
-    private Long poster;
+    private String poster;
 
     // Associations
-    @OneToMany(mappedBy = "book",fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JsonBackReference
+    @OneToMany(mappedBy = "book")
+    @JsonManagedReference
     private Set<Review> reviewSet = new HashSet<>();
 
     public Book(BookDto bookDto){
