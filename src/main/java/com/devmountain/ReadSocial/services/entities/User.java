@@ -1,7 +1,6 @@
-package com.devmountain.ReadSocial.entities;
+package com.devmountain.ReadSocial.services.entities;
 
 import com.devmountain.ReadSocial.dtos.UserDto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;

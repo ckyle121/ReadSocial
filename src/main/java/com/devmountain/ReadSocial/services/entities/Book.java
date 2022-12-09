@@ -1,12 +1,13 @@
-package com.devmountain.ReadSocial.entities;
+package com.devmountain.ReadSocial.services.entities;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,11 +23,11 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "title")
+    @Column(name = "title")
     private String title;
 
-    @Column(columnDefinition = "poster")
-    private Long poster;
+    @Column(name = "poster")
+    private String poster;
 
     // Associations
     @OneToMany(mappedBy = "book",fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})

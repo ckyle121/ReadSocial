@@ -1,6 +1,6 @@
 package com.devmountain.ReadSocial.dtos;
 
-import com.devmountain.ReadSocial.entities.Book;
+import com.devmountain.ReadSocial.services.entities.Book;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Set;
 public class BookDto {
     private Long id;
     private String title;
-    private Long poster;
+    private String poster;
 
     private Set<ReviewDto> reviewDtoSet = new HashSet<>();
     public BookDto(Book book){

@@ -1,4 +1,4 @@
-package com.devmountain.ReadSocial.entities;
+package com.devmountain.ReadSocial.services.entities;
 
 import com.devmountain.ReadSocial.dtos.ReviewDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,10 +18,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "text")
+    @Column(name = "text")
     private Long reviewText;
 
-    @Column(columnDefinition = "rating")
+    @Column(name = "rating")
     private Integer bookRating;
 
     // Associations

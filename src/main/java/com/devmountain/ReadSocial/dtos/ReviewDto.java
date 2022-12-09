@@ -1,6 +1,6 @@
 package com.devmountain.ReadSocial.dtos;
 
-import com.devmountain.ReadSocial.entities.Review;
+import com.devmountain.ReadSocial.services.entities.Review;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
