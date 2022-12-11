@@ -1,4 +1,4 @@
-package com.devmountain.ReadSocial.services.entities;
+package com.devmountain.ReadSocial.entities;
 
 import com.devmountain.ReadSocial.dtos.ReviewDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -19,10 +19,10 @@ public class Review {
     private Long id;
 
     @Column(name = "text")
-    private Long reviewText;
+    private Long review_text;
 
     @Column(name = "rating")
-    private Integer bookRating;
+    private Integer book_rating;
 
     // Associations
     @ManyToOne
@@ -34,11 +34,11 @@ public class Review {
     private Book book;
 
     public Review(ReviewDto reviewDto){
-        if (reviewDto.getReviewText() != null){
-            this.reviewText = reviewDto.getReviewText();
+        if (reviewDto.getReview_text() != null){
+            this.review_text = reviewDto.getReview_text();
         }
-        if (reviewDto.getBookRating() != null){
-            this.bookRating = reviewDto.getBookRating();
+        if (reviewDto.getBook_rating() != null){
+            this.book_rating = reviewDto.getBook_rating();
         }
     }
 }

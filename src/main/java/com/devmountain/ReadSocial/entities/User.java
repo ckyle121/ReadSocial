@@ -1,4 +1,4 @@
-package com.devmountain.ReadSocial.services.entities;
+package com.devmountain.ReadSocial.entities;
 
 import com.devmountain.ReadSocial.dtos.UserDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

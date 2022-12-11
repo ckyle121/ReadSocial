@@ -1,6 +1,8 @@
 const myModal = document.getElementById("myModal");
 const myInput = document.getElementById("myInput");
 
+const baseUrl = 'http://localhost:8080/api/v1/users'
+
 async function loginFormHandler(event) {
   event.preventDefault();
 
@@ -8,7 +10,7 @@ async function loginFormHandler(event) {
   const username = document.querySelector("#username-login").value.trim();
 
   if (username && password) {
-    const response = await fetch("/api/users/login", {
+    const response = await fetch(`${baseUrl}/login`, {
       method: "POST",
       body: JSON.stringify({
         username,
@@ -18,7 +20,8 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard/");
+        document.cookie = `userId=${responseArr[1]}`
+        window.location.replace(responseArr[0])
     } else {
       alert(response.statusText);
     }
@@ -37,7 +40,6 @@ async function signupFormHandler(event) {
       method: "POST",
       body: JSON.stringify({
         username,
-        email,
         password,
       }),
       headers: { "Content-Type": "application/json" },

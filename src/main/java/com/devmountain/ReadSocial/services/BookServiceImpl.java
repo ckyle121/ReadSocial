@@ -1,18 +1,14 @@
 package com.devmountain.ReadSocial.services;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
-import com.devmountain.ReadSocial.services.entities.Book;
-import com.devmountain.ReadSocial.services.entities.User;
+import com.devmountain.ReadSocial.entities.Book;
 import com.devmountain.ReadSocial.repositories.BookRepository;
 import com.devmountain.ReadSocial.repositories.ReviewRepository;
 import com.devmountain.ReadSocial.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {

@@ -1,9 +1,9 @@
 package com.devmountain.ReadSocial.services;
 
 import com.devmountain.ReadSocial.dtos.ReviewDto;
-import com.devmountain.ReadSocial.services.entities.Book;
-import com.devmountain.ReadSocial.services.entities.Review;
-import com.devmountain.ReadSocial.services.entities.User;
+import com.devmountain.ReadSocial.entities.Book;
+import com.devmountain.ReadSocial.entities.Review;
+import com.devmountain.ReadSocial.entities.User;
 import com.devmountain.ReadSocial.repositories.ReviewRepository;
 import com.devmountain.ReadSocial.repositories.UserRepository;
 import com.devmountain.ReadSocial.repositories.BookRepository;
@@ -71,8 +71,8 @@ public class ReviewServiceImpl implements ReviewService {
     public void updateReviewById(ReviewDto reviewDto) {
         Optional<Review> reviewOptional = reviewRepository.findById(reviewDto.getId());
         reviewOptional.ifPresent(review -> {
-            review.setReviewText(review.getReviewText());
-            review.setBookRating(review.getBookRating());
+            review.setReview_text(review.getReview_text());
+            review.setBook_rating(review.getBook_rating());
             reviewRepository.saveAndFlush(review);
         });
     }
