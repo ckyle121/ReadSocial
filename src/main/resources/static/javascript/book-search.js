@@ -5,7 +5,7 @@ function bookSearch() {
   tryAgain.innerHTML = `<div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
   <span class="visually-hidden">Loading...</span>
 </div></div>`;
-  // imdb get request
+  // google books get request
   const requestOptions = {
     method: "GET",
     redirect: "follow",
@@ -58,7 +58,7 @@ function showBooks(books) {
 
   bookList.innerHTML = temp;
 
-  tryAgain.innerHTML = `<a href="/dashboard">Didn't see what you were looking for? Try to get more specific.</a>`;
+  tryAgain.innerHTML = `<a href="/dashboard"> Didn't see what you were looking for? Try to get more specific.</a>`;
 }
 
 document.querySelector("#searchBook").addEventListener("click", bookSearch);

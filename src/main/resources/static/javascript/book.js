@@ -14,7 +14,7 @@ async function getBookReviews(bookId) {
         .catch(err => console.error(err))
 }
 
-// Create Review Cardds
+// Create Review Cards
 
 const createBookCards = (array) => {
     
@@ -26,7 +26,7 @@ const createBookCards = (array) => {
            <div class="d-flex inline justify-content-between">
 
              <p><a
-                 href="/users/{{comment.user.username}}"
+                 href="/users/{review.user.userId}}"
                >@{$obj.user.username}}</a></p>
 
              <div class="ratebox text-center">
