@@ -239,8 +239,9 @@ h1:after {
   width: 300px;
 }
 
-#booklist {
+#bookList {
   display: flex;
+  justify-content: center;
 }
 
 .rating__star {
@@ -355,6 +356,7 @@ h1:after {
   /* top: 60px; */
   /* left: calc(50% - 300px); */
   display: flex;
+  justify-content: center;
 }
 
 .userCard {

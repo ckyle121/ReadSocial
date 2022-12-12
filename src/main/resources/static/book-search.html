@@ -24,15 +24,15 @@
 </head>
 <body>
 <section class="p-3 text-center">
-    <h2 id="userName" class="display-4" data-username="{{user.username}}">Search for a Book to Review</h2>
+    <h2 id="userName" class="display-4">Search for a Book to Review</h2>
 
     <section class="m-3 text-center">
         <form class="mb-3">
             <input type="text" id="book-search" name="book-search">
             <button type="submit" id="searchBook">Search</button>
         </form>
-        <div class="userCardContainer w-100" id="booklist" />
-        <div id="try-again" />
+        <div class="userCardContainer w-100" id="bookList"></div>
+        <div id="try-again" ></div>
     </section>
 </section>
 
@@ -80,7 +80,7 @@
 </div>
 
 <script src="/javascript/book-search.js"></script>
-<script src="/javascript/add-post.js"></script>
+<script src="/javascript/book.js"></script>
 <script src="/javascript/rating.js"></script>
 </body>
 </html>
