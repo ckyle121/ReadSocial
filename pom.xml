@@ -50,6 +50,16 @@
 			<artifactId>spring-security-core</artifactId>
 			<version>5.5.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.jknack</groupId>
+			<artifactId>handlebars-jackson2</artifactId>
+			<version>4.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jknack</groupId>
+			<artifactId>handlebars-guava-cache</artifactId>
+			<version>4.0.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
