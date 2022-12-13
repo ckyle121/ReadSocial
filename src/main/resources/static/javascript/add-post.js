@@ -1,30 +1,27 @@
-const bookList = document.querySelector("#booklist");
+const bookList = document.querySelector("#bookList");
 let currentBook = {};
-const sessionUser = document
-  .querySelector("#userName")
-  .getAttribute("data-username");
-console.log(sessionUser);
 
-async function newFormHandler(event) {
-  event.preventDefault();
 
-  const book_id = currentBook.book_id;
-
-  await fetch(`/api/reviews/user-reviews`, {
-    method: "GET",
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      const previousReviews = result.filter(
-        (book) => book.book_id === book_id
-      );
-      if (previousReviews.length === 0) {
-        postBook();
-      } else {
-        alert("You've already reviewed that book!");
-      }
-    });
-}
+//async function newFormHandler(event) {
+//  event.preventDefault();
+//
+//  const book_id = currentBook.book_id;
+//
+//  await fetch(`/api/v1/reviews/user/{userId}`, {
+//    method: "GET",
+//  })
+//    .then((response) => response.json())
+//    .then((result) => {
+//      const previousReviews = result.filter(
+//        (book) => book.book_id === book_id
+//      );
+//      if (previousReviews.length === 0) {
+//        postBook();
+//      } else {
+//        alert("You've already reviewed that book!");
+//      }
+//    });
+//}
 
 async function postBook() {
   const book_id = currentBook.book_id;
@@ -68,7 +65,7 @@ async function postBook() {
     },
   });
   if (review.ok) {
-    document.location.replace("/dashboard");
+    document.location.replace("./dashboard.html");
   } else {
     alert(response.statusText);
   }
@@ -76,7 +73,7 @@ async function postBook() {
 
 document
   .querySelector(".new-post-form")
-  .addEventListener("submit", newFormHandler);
+  .addEventListener("submit", postBook);
 
 document.addEventListener("click", function (e) {
   if (e.target && e.target.className == "bookChoice") {

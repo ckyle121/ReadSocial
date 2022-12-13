@@ -56,7 +56,7 @@ function showBooks(books) {
 
   bookList.innerHTML = temp;
 
- tryAgain.innerHTML = "<div class='m-2'>Don't see the book you're looking for? Try to get a bit more specific.</div>";
+ //tryAgain.innerHTML = "<div class="m-4 yellow">Don't see the book you're looking for? Try to get a bit more specific.</div>";
 }
 
 document.querySelector("#searchBook").addEventListener("click", bookSearch);
