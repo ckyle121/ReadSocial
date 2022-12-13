@@ -24,10 +24,38 @@
 </head>
 <body>
 
+<!-- Nav -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Watch Social</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="./dashboard.html">My Dashboard</a>
+                <a class="nav-link" href="./book-search.html">Create a Review</a>
+                <a class="nav-link" href="./all-reviews.html">All Reviews</a>
+                <a class="nav-link" onclick="handleLogout()">Log Out</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
 <div id="single-review-container"></div>
 
 
 <!-- Review Modal -->
+
 <div class="d-flex justify-content-center mt-5">
     <button
             type="button"
