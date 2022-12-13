@@ -30,14 +30,12 @@ const createBookCards = (array) => {
                >@{$obj.user.username}}</a></p>
 
              <div class="ratebox text-center">
-               {{#times review.book_rating}}
-                 <i class="rating__star fas fa-star"></i>
-               {{/times}}
+                <div onload=times({$obj.book_rating}>
              </div>
 
-             <p class="d-flex justify-content-end review-text">{{format_date
-                 comment.created_at
-               }}</p>
+//             <p class="d-flex justify-content-end review-text">{{format_date
+//                 comment.created_at
+//               }}</p>
 
            </div>
 
@@ -45,4 +43,14 @@ const createBookCards = (array) => {
         `
         reviewDiv.append(reviewCard);
     })
+}
+
+function times(n){
+    let starDiv = document.createElement("div")
+    for (var i = 0; i < n; ++i) {
+        let star = document.createElement("i")
+        star.classList.add("rating__star fas fa-star")
+        starDiv.appendChild(star)
+    }
+    return starDiv
 }

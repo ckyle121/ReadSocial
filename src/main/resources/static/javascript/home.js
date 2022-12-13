@@ -7,6 +7,7 @@ const bookPosters = [
     images.Caterpillar,
     images.lifeOfPi,
     images.Fahrenheit
+    images.
 ]
 
 // DOM Element 

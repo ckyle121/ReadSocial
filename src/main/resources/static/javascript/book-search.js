@@ -23,7 +23,6 @@ function bookSearch() {
       .then((response) => response.json())
       .then((result) => {
         showBooks(result);
-        console.log(result);
       })
       .catch((error) => {
         console.log("error", error);
@@ -44,17 +43,20 @@ function showBooks(books) {
   //  for loop for top 5 books of the search
   let temp = "";
   for (let i = 0; i < 5; i++) {
-    temp += `<div class="userCard" data-id= ${books.items[i].id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">
-      <h3 class="title book-name">
-      ${books.items[i].volumeInfo.title}
-      </h3><div class="inner-text">${books.items[i].volumeInfo.description.substr(0,6)}</div>
-      <div class="bottom-button"><button type="button" data-bs-toggle="modal" data-bs-target="#bookReview" class="bookChoice">Select Book</button></div>
-    </div>`;
+    temp += `
+    <div class="userCard" data-id= ${books.items[i].id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">
+      <h3 class="title book-name">${books.items[i].volumeInfo.title}</h3>
+      <div class="inner-text">${books.items[i].volumeInfo.description.substr(0,6)}</div>
+      <div class="bottom-button">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#bookReview" class="bookChoice">Select Book</button>
+      </div>
+    </div>
+    `;
   }
 
   bookList.innerHTML = temp;
 
-  tryAgain.innerHTML = "<p> Didn't see what you were looking for? Try to get more specific.</p>";
+ tryAgain.innerHTML = "<div class='m-2'>Don't see the book you're looking for? Try to get a bit more specific.</div>";
 }
 
 document.querySelector("#searchBook").addEventListener("click", bookSearch);

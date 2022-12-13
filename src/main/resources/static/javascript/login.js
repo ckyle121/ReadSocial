@@ -17,11 +17,13 @@ async function loginFormHandler(event) {
         password,
       }),
       headers: { "Content-Type": "application/json" },
-    });
+    }).catch(err => console.error(err.message));
+
+    const responseArr = await response.json()
 
     if (response.ok) {
         document.cookie = `userId=${responseArr[1]}`
-        window.location.replace(responseArr[0])
+        document.location.replace(`http://localhost:8080/all-reviews.html`);
     } else {
       alert(response.statusText);
     }
@@ -35,19 +37,20 @@ async function signupFormHandler(event) {
   const password = document.querySelector("#password-signup").value.trim();
 
   if (username && password) {
-    const response = await fetch("/api/users", {
+    const response = await fetch(`${baseUrl}/register`, {
       method: "POST",
       body: JSON.stringify({
         username,
         password,
       }),
       headers: { "Content-Type": "application/json" },
-    });
+    }).catch(err => console.error(err.message));
 
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace(`http://localhost:8080/all-reviews.html`);
     } else {
       alert("This username is already taken");
+      console.log(response);
     }
   }
 }
@@ -60,6 +63,11 @@ document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);
 
-myModal.addEventListener("shown.bs.modal", function () {
-  myInput.focus();
-});
+//if(myModal){
+//    myModal.addEventListener("shown.bs.modal", function () {
+//      myInput.focus();
+//    })
+//}
+
+
+
