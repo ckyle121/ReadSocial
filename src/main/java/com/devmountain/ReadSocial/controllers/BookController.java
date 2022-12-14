@@ -1,6 +1,8 @@
 package com.devmountain.ReadSocial.controllers;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
+import com.devmountain.ReadSocial.dtos.ReviewDto;
+import com.devmountain.ReadSocial.dtos.UserDto;
 import com.devmountain.ReadSocial.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,11 @@ import java.util.Optional;
 public class BookController {
     @Autowired
     private BookService bookService;
+
+    @PostMapping("/book/{bookId}")
+    public void addBook(@RequestBody BookDto bookDto){
+        bookService.addBook(bookDto);
+    }
 
 //    @GetMapping("/user/{userId}")
 //    public List<BookDto> getBooksByUser(@PathVariable Long userId){

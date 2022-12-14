@@ -83,9 +83,9 @@ const createReviewCards = (array) => {
                   class="img img-responsive"
                 />
                 <div class="book-title">{$book.title}</div>
-                <div class="book-position"><a>{{#times movie_rating}}
-                      <i class="fas fa-star"></i>
-                    {{/times}}</a></div>
+                <div class="book-position">
+                    <div onload=times({$obj.book_rating}>
+                /div>
                 <div class="book-overview">
                   <div class="book-overview">
                     <div class="row text-center">
@@ -102,6 +102,16 @@ const createReviewCards = (array) => {
         `
         userReviewContainer.append(reviewCard);
     })
+}
+
+function times(n){
+    let starDiv = document.createElement("div")
+    for (var i = 0; i < n; ++i) {
+        let star = document.createElement("i")
+        star.classList.add("rating__star fas fa-star")
+        starDiv.appendChild(star)
+    }
+    return starDiv
 }
 
 getReviews(userId);

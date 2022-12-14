@@ -1,27 +1,32 @@
-const bookList = document.querySelector("#bookList");
+const bookList = document.querySelector("#booklist");
 let currentBook = {};
+const cookieArr = document.cookie.split("=")
+const userId = cookieArr[1];
+console.log(userId);
 
+const baseUrl = "http://localhost:8080/api/v1/reviews/"
+const bookBaseUrl = "http://localhost:8080/api/v1/books"
 
-//async function newFormHandler(event) {
-//  event.preventDefault();
-//
-//  const book_id = currentBook.book_id;
-//
-//  await fetch(`/api/v1/reviews/user/{userId}`, {
-//    method: "GET",
-//  })
-//    .then((response) => response.json())
-//    .then((result) => {
-//      const previousReviews = result.filter(
-//        (book) => book.book_id === book_id
-//      );
-//      if (previousReviews.length === 0) {
-//        postBook();
-//      } else {
-//        alert("You've already reviewed that book!");
-//      }
-//    });
-//}
+async function newFormHandler(event) {
+  event.preventDefault();
+
+  const book_id = currentBook.book_id;
+
+  await fetch(`${baseUrl}user/${userId}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      const previousReviews = result.filter(
+        (book) => book.book_id === book_id
+      );
+      if (previousReviews.length === 0) {
+        postBook();
+      } else {
+        alert("You've already reviewed that book!");
+      }
+    });
+}
 
 async function postBook() {
   const book_id = currentBook.book_id;
@@ -34,13 +39,13 @@ async function postBook() {
     .querySelector(".rating")
     .querySelectorAll(".fas").length;
 
-  const bookResponse = await fetch(`/api/v1/books/${book_id}`, {
+  const bookResponse = await fetch(`${bookBaseUrl}/${book_id}`, {
     method: "GET",
   });
   // check to see if the book is in the database first
   if (!bookResponse.ok) {
     // if not, add it
-    const postNewBook = await fetch(`/api/v1/books`, {
+    const postNewBook = await fetch(`${bookBaseUrl}/book/${book_id}`, {
       method: "POST",
       body: JSON.stringify({
         book_id,
@@ -53,7 +58,7 @@ async function postBook() {
     });
   }
 
-  const review = await fetch(`/api/v1/reviews`, {
+  const review = await fetch(`${baseUrl}`, {
     method: "POST",
     body: JSON.stringify({
       review_text,
@@ -73,7 +78,7 @@ async function postBook() {
 
 document
   .querySelector(".new-post-form")
-  .addEventListener("submit", postBook);
+  .addEventListener("submit", newFormHandler);
 
 document.addEventListener("click", function (e) {
   if (e.target && e.target.className == "bookChoice") {

@@ -37,8 +37,12 @@ public class ReviewController {
     }
 
     @PostMapping("/user/{userId}")
-    public void addReview(@RequestBody ReviewDto reviewDto, @PathVariable Long userId){
-        reviewService.addReview(reviewDto, userId);
+    public void addReviewToUser(@RequestBody ReviewDto reviewDto, @PathVariable Long userId){
+        reviewService.addReviewToUser(reviewDto, userId);
+    }
+    @PostMapping("/book/{bookId}")
+    public void addReviewToBook(@RequestBody ReviewDto reviewDto, @PathVariable Long bookId){
+        reviewService.addReviewToBook(reviewDto, bookId);
     }
 
     @DeleteMapping("/{reviewId}")

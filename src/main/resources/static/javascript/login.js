@@ -17,12 +17,13 @@ async function loginFormHandler(event) {
         password,
       }),
       headers: { "Content-Type": "application/json" },
-    }).catch(err => console.error(err.message));
+    });
 
     const responseArr = await response.json()
 
     if (response.ok) {
         document.cookie = `userId=${responseArr[1]}`
+        window.location.replace(responseArr[0])
         document.location.replace(`http://localhost:8080/all-reviews.html`);
     } else {
       alert(response.statusText);
@@ -46,8 +47,11 @@ async function signupFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     }).catch(err => console.error(err.message));
 
+    const responseArr = await response.json()
+
     if (response.ok) {
-      document.location.replace(`http://localhost:8080/all-reviews.html`);
+      window.location.replace(responseArr[0])
+      document.location.replace(`http://localhost:8080/login.html`);
     } else {
       alert("This username is already taken");
       console.log(response);
@@ -62,12 +66,6 @@ document
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);
-
-//if(myModal){
-//    myModal.addEventListener("shown.bs.modal", function () {
-//      myInput.focus();
-//    })
-//}
 
 
 
