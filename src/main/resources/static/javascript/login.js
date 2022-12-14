@@ -19,11 +19,10 @@ async function loginFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
 
-    const responseArr = await response.json()
+    let number = Math.floor(Math.random()*1000000);
 
     if (response.ok) {
-        document.cookie = `userId=${responseArr[1]}`
-        window.location.replace(responseArr[0])
+        document.cookie = `userId=${number}`
         document.location.replace(`http://localhost:8080/all-reviews.html`);
     } else {
       alert(response.statusText);
@@ -47,10 +46,7 @@ async function signupFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     }).catch(err => console.error(err.message));
 
-    const responseArr = await response.json()
-
     if (response.ok) {
-      window.location.replace(responseArr[0])
       document.location.replace(`http://localhost:8080/login.html`);
     } else {
       alert("This username is already taken");
