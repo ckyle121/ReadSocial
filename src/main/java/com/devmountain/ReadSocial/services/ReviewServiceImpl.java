@@ -29,6 +29,12 @@ public class ReviewServiceImpl implements ReviewService {
     private BookRepository bookRepository;
 
     @Override
+    public List<ReviewDto> getAllReviews(){
+        List<Review> reviewList = reviewRepository.findAll();
+        return reviewList.stream().map(review -> new ReviewDto(review)).collect(Collectors.toList());
+    }
+
+    @Override
     public List<ReviewDto> getAllReviewsByUserId(Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
         if(userOptional.isPresent()){
@@ -54,7 +60,7 @@ public class ReviewServiceImpl implements ReviewService {
         Optional<Book> bookOptional = bookRepository.findById(bookId);
         //Optional<User> userOptional = userRepository.findById(userId);
         Review review = new Review(reviewDto);
-        //bookOptional.ifPresent(review::setBook);
+        bookOptional.ifPresent(review::setBook);
         //userOptional.ifPresent(review::setUser);
         reviewRepository.saveAndFlush(review);
     }

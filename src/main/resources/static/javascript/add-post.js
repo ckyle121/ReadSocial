@@ -34,13 +34,13 @@ async function postBook() {
     .querySelector(".rating")
     .querySelectorAll(".fas").length;
 
-  const bookResponse = await fetch(`/api/book/${book_id}`, {
+  const bookResponse = await fetch(`/api/v1/books/${book_id}`, {
     method: "GET",
   });
   // check to see if the book is in the database first
   if (!bookResponse.ok) {
     // if not, add it
-    const postNewBook = await fetch(`/api/book`, {
+    const postNewBook = await fetch(`/api/v1/books`, {
       method: "POST",
       body: JSON.stringify({
         book_id,
@@ -53,7 +53,7 @@ async function postBook() {
     });
   }
 
-  const review = await fetch(`/api/reviews`, {
+  const review = await fetch(`/api/v1/reviews`, {
     method: "POST",
     body: JSON.stringify({
       review_text,

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReviewService {
+    List<ReviewDto> getAllReviews();
     List<ReviewDto> getAllReviewsByUserId(Long userId);
     List<ReviewDto> getAllReviewsByBookId(Long bookId);
 

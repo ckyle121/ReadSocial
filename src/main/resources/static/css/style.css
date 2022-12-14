@@ -10,11 +10,11 @@ html,
   padding: 0;
   margin: 0;
   font-family: "Raleway", sans-serif;
-  color: black;
+  color: #025259;
   background: -webkit-linear-gradient(
     top,
-    rgba(125, 126, 125, 1) 0%,
-    rgba(14, 14, 14, 1) 100%
+    rgba(0, 113, 114, 1) 0%,
+    rgba(2, 82, 89, 1) 100%
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -36,40 +36,40 @@ header {
 }
 
 footer {
-  border-top: 1px solid #ccc;
   display: flex;
   justify-content: center;
   padding: 1%;
   font-size: 110%;
+  color: #F29325;
 }
 
 /* =========================== */
 
 /* ========Basics============= */
 
-h8,
+
 h6,
 h3,
 h4,
 h2,
 h5,
 .yellow {
-  color: #ffe23d;
+  color: #F29325;
 }
 
 a {
   text-decoration: none;
-  color: #ffe23d;
+  color: #F29325;
   font-weight: bold;
   transition: color 0.1s;
 }
 
 a:hover {
-  color: #834556;
+  color: #D94F04;
 }
 
 button {
-  background-color: #834556;
+  background-color:#D94F04;
   border: 0;
   padding: 1%;
   color: white;
@@ -79,17 +79,17 @@ button {
   border-radius: 5px;
 }
 */ button:hover {
-  background-color: #683341;
+  background-color: #D94F04;
 }
 
 textarea,
 input {
   padding: 0.5%;
   border-radius: 5px;
-  border: 1px solid #ccc;
-
-  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  color: #025259;
   font-size: 20px;
+  font-weight: bolder;
 }
 
 textarea:focus,
@@ -109,7 +109,9 @@ form > div {
 }
 
 form label {
+padding-top: 20px;
   display: block;
+  font-weight: 800;
 }
 
 /* =========================== */
@@ -133,11 +135,11 @@ form label {
 
 h1 {
   text-align: center;
-  color: white;
+  color: #D94F04;
   text-transform: uppercase;
   font-family: "Raleway", cursive;
   position: relative;
-  background: black;
+  background-color: #D94F04;
   padding: 20px;
   letter-spacing: 30px;
   animation: comein 1.5s 1 ease-in-out forwards;
@@ -187,12 +189,12 @@ h1:after {
 
 .modal-text-style {
   font-weight: bold;
-  color: black;
+  color: #025259;
 }
 
 .modal-text-bold {
-  font-weight: bold;
-  color: #ffe23d;
+  font-weight: bolder;
+  color: #025259;
 }
 
 /* =========================== */
@@ -211,17 +213,17 @@ h1:after {
 .post .title span {
   font-style: italic;
   font-size: 90%;
-  color: #7d7d7d;
+  color: #007172;
 }
 
 .modal-text-style {
   font-weight: bold;
-  color: black;
+  color:#025259;
 }
 
 .modal-text-bold {
-  font-weight: bold;
-  color: #ffe23d;
+  font-weight: bolder;
+  color: #D94F04;
 }
 
 .review {
@@ -425,7 +427,7 @@ h1:after {
   max-width: 768px;
   margin: 0 auto;
   background-color: black;
-  color: #ffe23d;
+  color: #F29325;
   border-radius: 10px;
 }
 
@@ -462,14 +464,14 @@ h1:after {
   background: linear-gradient(
     140deg,
     rgba(0, 0, 0, 0.4) 50%,
-    rgba(255, 255, 0, 0) 50%
+    rgba(2, 82, 89, 0) 50%
   );
   transition: all 0.15s linear;
 }
 
 .book-card .book-position {
   position: absolute;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 113, 114, 0.4);
   left: 30px;
   top: 100px;
   transition: all 0.15s linear;
@@ -483,9 +485,9 @@ h1:after {
   background: linear-gradient(
     0deg,
     rgba(0, 0, 0, 0.4) 50%,
-    #400036
+    #007172
   );
-  color: #fff;
+  color: #025259;
   padding: 50px 0px 20px 0px;
   transition: all 0.15s linear;
 }
