@@ -19,7 +19,7 @@ public class Review {
     private Long id;
 
     @Column(name = "text")
-    private Long review_text;
+    private String review_text;
 
     @Column(name = "rating")
     private Integer book_rating;

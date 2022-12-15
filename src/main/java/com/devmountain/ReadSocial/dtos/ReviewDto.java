@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewDto {
     private Long id;
-    private Long review_text;
+    private String review_text;
     private Integer book_rating;
     private UserDto userDto;
     private BookDto bookDto;

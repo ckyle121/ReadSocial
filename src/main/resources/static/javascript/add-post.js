@@ -61,8 +61,10 @@ async function postBook() {
   const bookReview = await fetch(`${baseUrl}book/${book_id}`, {
     method: "POST",
     body: JSON.stringify({
-      review_text,
+      book_id,
       book_rating,
+      review_text,
+      userId
     }),
     headers: {
       "Content-Type": "application/json",
@@ -72,8 +74,10 @@ async function postBook() {
    const userReview = await fetch(`${baseUrl}user/${userId}`, {
       method: "POST",
       body: JSON.stringify({
-        review_text,
-        book_rating,
+         book_id,
+         book_rating,
+         review_text,
+         userId
       }),
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +85,7 @@ async function postBook() {
    });
 
   if (userReview.ok && bookReview.ok) {
-    document.location.replace("http://localhost:8080/api/v1/dashboard.html");
+    document.location.replace("http://localhost:8080/dashboard.html");
   } 
 }
 
