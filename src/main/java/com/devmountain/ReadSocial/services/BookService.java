@@ -15,7 +15,7 @@ public interface BookService {
     //List<BookDto> getAllBooksByUserId(Long userId);
 
     @Transactional
-    List<String> addBook(BookDto bookDto);
+    void addBook(BookDto bookDto);
 
     Optional<BookDto> getBookById(Long bookId);
 }

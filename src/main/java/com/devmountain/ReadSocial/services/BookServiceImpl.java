@@ -38,12 +38,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public  List<String> addBook(BookDto bookDto){
-        List<String> response = new ArrayList<>();
+    public void addBook(BookDto bookDto){
         Book book = new Book(bookDto);
         bookRepository.saveAndFlush(book);
-        response.add("http://localhost:8080/all-reviews.html");
-        return response;
     }
 
     @Override

@@ -19,13 +19,15 @@ async function loginFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
 
-    let number = Math.floor(Math.random()*1000000);
+    //let number = Math.floor(Math.random()*1000000);
+    const responseArr = await response.json()
 
-    if (response.ok) {
-        document.cookie = `userId=${number}`
-        document.location.replace(`http://localhost:8080/all-reviews.html`);
+    if (response.status === 200){
+        document.cookie = `userId=${responseArr[1]}`
+        window.location.replace(responseArr[0])
     } else {
-      alert(response.statusText);
+        alert("Username or Password Incorrect. Please Try Again.");
+        location.reload();
     }
   }
 }
