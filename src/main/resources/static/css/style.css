@@ -36,11 +36,14 @@ header {
 }
 
 footer {
+    position: absolute;
+  width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1%;
+  bottom: 0;
   font-size: 110%;
   color: #F29325;
+
 }
 
 /* =========================== */
@@ -55,6 +58,11 @@ h2,
 h5,
 .yellow {
   color: #F29325;
+}
+
+h2{
+font-weight: bold;
+padding-top: 20px;
 }
 
 a {
@@ -295,8 +303,8 @@ h1:after {
 }
 .carousel__face {
   position: absolute;
-  width: 300px;
-  height: 187px;
+  width: 200px;
+  height: 150px;
   top: 20px;
   left: 10px;
   right: 10px;

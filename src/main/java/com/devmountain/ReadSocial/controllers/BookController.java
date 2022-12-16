@@ -1,13 +1,10 @@
 package com.devmountain.ReadSocial.controllers;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
-import com.devmountain.ReadSocial.dtos.ReviewDto;
-import com.devmountain.ReadSocial.dtos.UserDto;
 import com.devmountain.ReadSocial.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController

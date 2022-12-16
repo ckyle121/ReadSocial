@@ -1,9 +1,7 @@
 package com.devmountain.ReadSocial.services;
 
 import com.devmountain.ReadSocial.dtos.BookDto;
-import com.devmountain.ReadSocial.dtos.UserDto;
 import com.devmountain.ReadSocial.entities.Book;
-import com.devmountain.ReadSocial.entities.User;
 import com.devmountain.ReadSocial.repositories.BookRepository;
 import com.devmountain.ReadSocial.repositories.ReviewRepository;
 import com.devmountain.ReadSocial.repositories.UserRepository;
@@ -11,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service

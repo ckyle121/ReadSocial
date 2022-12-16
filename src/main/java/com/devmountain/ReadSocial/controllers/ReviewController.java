@@ -1,10 +1,8 @@
 package com.devmountain.ReadSocial.controllers;
 
 import com.devmountain.ReadSocial.dtos.ReviewDto;
-import com.devmountain.ReadSocial.entities.Review;
 import com.devmountain.ReadSocial.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

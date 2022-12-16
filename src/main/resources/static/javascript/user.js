@@ -77,12 +77,12 @@ const createReviewCards = (array) => {
     array.forEach(obj => {
         let reviewCard = document.createElement("div")
         reviewCard.classList.add("col-md-4")
-        noteCard.innerHTML = `
+        reviewCard.innerHTML = `
               <div class="book-card"><img
                   src="{{movie.poster}}"
                   class="img img-responsive"
                 />
-                <div class="book-title">{$book.title}</div>
+                <div class="book-title">$obj.{book.title}</div>
                 <div class="book-position">
                     <div onload=times({$obj.book_rating}>
                 /div>
