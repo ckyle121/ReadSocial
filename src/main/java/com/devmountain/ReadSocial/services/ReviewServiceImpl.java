@@ -54,22 +54,31 @@ public class ReviewServiceImpl implements ReviewService {
         return Collections.emptyList();
     }
 
-
     @Transactional
-    public void addReviewToUser(ReviewDto reviewDto, Long userId) {
+    public void addReview(ReviewDto reviewDto, Long userId, Long bookId){
         Optional<User> userOptional = userRepository.findById(userId);
+        Optional<Book> bookOptional = bookRepository.findById(bookId);
         Review review = new Review(reviewDto);
+        bookOptional.ifPresent(review::setBook);
         userOptional.ifPresent(review::setUser);
         reviewRepository.saveAndFlush(review);
     }
 
-    @Transactional
-    public void addReviewToBook(ReviewDto reviewDto, Long bookId) {
-        Optional<Book> bookOptional = bookRepository.findById(bookId);
-        Review review = new Review(reviewDto);
-        bookOptional.ifPresent(review::setBook);
-        reviewRepository.saveAndFlush(review);
-    }
+//    @Transactional
+//    public void addReviewToUser(ReviewDto reviewDto, Long userId) {
+//        Optional<User> userOptional = userRepository.findById(userId);
+//        Review review = new Review(reviewDto);
+//        userOptional.ifPresent(review::setUser);
+//        reviewRepository.saveAndFlush(review);
+//    }
+
+//    @Transactional
+//    public void addReviewToBook(ReviewDto reviewDto, Long bookId) {
+//        Optional<Book> bookOptional = bookRepository.findById(bookId);
+//        Review review = new Review(reviewDto);
+//        bookOptional.ifPresent(review::setBook);
+//        reviewRepository.saveAndFlush(review);
+//    }
 
     @Override
     @Transactional

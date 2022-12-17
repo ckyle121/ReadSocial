@@ -11,19 +11,8 @@ const postUrls = [
     "https://books.google.com/books/content?id=xqRPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" // vanishing half
 ]
 
-const posterUrls = [
-    "https://imgur.com/a/1NAFtgT",
-    "https://imgur.com/Vq3uU1m"
-
-]
-
-const bookPosters = [
-    './bookPosters/451.jpg'
-]
-
 // DOM Element 
 const homeDiv = document.getElementById('HomeDiv')
-
 
 const createCarousel = (posters) => {
     homeDiv.innerHTML = ''
