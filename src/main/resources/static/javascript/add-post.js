@@ -4,7 +4,7 @@ const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
 console.log(userId);
 
-const baseUrl = "http://localhost:8080/api/v1/reviews/"
+const baseUrl = "http://localhost:8080/api/v1/reviews"
 const bookBaseUrl = "http://localhost:8080/api/v1/books"
 
 async function newFormHandler(event) {
@@ -12,7 +12,7 @@ async function newFormHandler(event) {
 
   const book_id = currentBook.book_id;
 
-  await fetch(`${baseUrl}user/${userId}`, {
+  await fetch(`${baseUrl}/user/${userId}`, {
     method: "GET",
   })
     .then((response) => response.json())
@@ -58,20 +58,7 @@ async function postBook() {
     });
   }
 
-  const bookReview = await fetch(`${baseUrl}book/${book_id}`, {
-    method: "POST",
-    body: JSON.stringify({
-      book_id,
-      book_rating,
-      review_text,
-      userId
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-   const userReview = await fetch(`${baseUrl}user/${userId}`, {
+   const review = await fetch(`${baseUrl}`, {
       method: "POST",
       body: JSON.stringify({
          book_id,
@@ -84,7 +71,7 @@ async function postBook() {
       },
    });
 
-  if (userReview.ok && bookReview.ok) {
+  if (review.ok) {
     document.location.replace("http://localhost:8080/dashboard.html");
   } 
 }

@@ -57,10 +57,12 @@ public class ReviewServiceImpl implements ReviewService {
     @Transactional
     public void addReview(ReviewDto reviewDto, Long userId, Long bookId){
         Optional<User> userOptional = userRepository.findById(userId);
+        System.out.println("useId = " + userId);
         Optional<Book> bookOptional = bookRepository.findById(bookId);
         Review review = new Review(reviewDto);
         bookOptional.ifPresent(review::setBook);
         userOptional.ifPresent(review::setUser);
+        userOptional.ifPresent(System.out::println);
         reviewRepository.saveAndFlush(review);
     }
 
