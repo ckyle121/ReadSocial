@@ -1,11 +1,8 @@
 package com.devmountain.ReadSocial.controllers;
 
-import com.devmountain.ReadSocial.dtos.BookDto;
-import com.devmountain.ReadSocial.dtos.CreateReviewDto;
 import com.devmountain.ReadSocial.dtos.ReviewDto;
 import com.devmountain.ReadSocial.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,11 +21,7 @@ public class ReviewController {
 
     @PostMapping("/")
     public void addReview(@RequestBody CreateReviewDto createData){
-        ReviewDto reviewDto = new ReviewDto();
-        reviewDto.setBook_rating(createData.book_rating);
-        reviewDto.setReview_text(createData.review_text);
-        reviewService.addReview(reviewDto, createData.userId, createData.bookId);
-        System.out.println("Added Review");
+
     }
 
 //    @PostMapping("/")
