@@ -27,7 +27,7 @@ public class User {
     @Column
     private String password;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private Set<Review> reviewSet = new HashSet<>();
 

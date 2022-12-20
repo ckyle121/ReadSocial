@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -56,15 +57,19 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Transactional
     public void addReview(ReviewDto reviewDto, Long userId, Long bookId){
-        Optional<User> userOptional = userRepository.findById(userId);
-        System.out.println("useId = " + userId);
+        //Optional<User> userOptional = userRepository.findById(userId);
+        System.out.println("userId = " + userId);
         Optional<Book> bookOptional = bookRepository.findById(bookId);
+        System.out.println(bookOptional.isPresent());
         Review review = new Review(reviewDto);
         bookOptional.ifPresent(review::setBook);
-        userOptional.ifPresent(review::setUser);
-        userOptional.ifPresent(System.out::println);
+        bookOptional.ifPresent(System.out::println);
+        //userOptional.ifPresent(review::setUser);
+        //userOptional.ifPresent(System.out::println);
+        System.out.println(review);
         reviewRepository.saveAndFlush(review);
     }
+
 
 //    @Transactional
 //    public void addReviewToUser(ReviewDto reviewDto, Long userId) {

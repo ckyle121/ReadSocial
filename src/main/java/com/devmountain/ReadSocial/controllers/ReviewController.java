@@ -1,5 +1,6 @@
 package com.devmountain.ReadSocial.controllers;
 
+import com.devmountain.ReadSocial.dtos.BookDto;
 import com.devmountain.ReadSocial.dtos.CreateReviewDto;
 import com.devmountain.ReadSocial.dtos.ReviewDto;
 import com.devmountain.ReadSocial.services.ReviewService;
@@ -29,6 +30,12 @@ public class ReviewController {
         reviewService.addReview(reviewDto, createData.userId, createData.bookId);
         System.out.println("Added Review");
     }
+
+//    @PostMapping("/")
+//    public void addBook(@RequestBody ReviewDto reviewDto){
+//
+//        reviewService.addReview(reviewDto);
+//    }
 
     @GetMapping("/user/{userId}")
     public List<ReviewDto> getReviewsByUser(@PathVariable Long userId){

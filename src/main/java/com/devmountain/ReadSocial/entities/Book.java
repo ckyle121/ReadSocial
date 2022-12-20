@@ -30,7 +30,7 @@ public class Book {
     private String poster;
 
     // Associations
-    @OneToMany(mappedBy = "book",fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "book")
     @JsonManagedReference
     private Set<Review> reviewSet = new HashSet<>();
 

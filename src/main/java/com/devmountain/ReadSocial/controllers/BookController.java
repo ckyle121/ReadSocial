@@ -13,7 +13,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @PostMapping("/{bookId}")
+    @PostMapping("/")
     public void addBook(@RequestBody BookDto bookDto){
         bookService.addBook(bookDto);
     }

@@ -4,7 +4,7 @@ const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
 console.log(userId);
 
-const baseUrl = "http://localhost:8080/api/v1/reviews"
+const baseUrl = "http://localhost:8080/api/v1/reviews/"
 const bookBaseUrl = "http://localhost:8080/api/v1/books"
 
 async function newFormHandler(event) {
@@ -73,7 +73,9 @@ async function postBook() {
 
   if (review.ok) {
     document.location.replace("http://localhost:8080/dashboard.html");
-  } 
+  } else {
+  console.log(review);
+  }
 }
 
 document
