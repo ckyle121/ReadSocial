@@ -45,4 +45,13 @@ public class UserServiceImpl implements UserService {
         }
         return response;
     }
+
+    @Override
+    public Optional<UserDto> getUserById(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if(userOptional.isPresent()){
+            return Optional.of(new UserDto(userOptional.get()));
+        }
+        return Optional.empty();
+    }
 }

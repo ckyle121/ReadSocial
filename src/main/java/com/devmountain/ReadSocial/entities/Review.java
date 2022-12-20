@@ -2,6 +2,7 @@ package com.devmountain.ReadSocial.entities;
 
 import com.devmountain.ReadSocial.dtos.ReviewDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,12 +26,14 @@ public class Review {
     private Integer book_rating;
 
     // Associations
+
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name="user_id",referencedColumnName = "id")
     private User user;
 
+
     @ManyToOne()
-    @JsonBackReference
+    @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 
     public Review(ReviewDto reviewDto){
@@ -42,6 +45,4 @@ public class Review {
         }
     }
 
-    public void setbookDto(Book book) {
-    }
 }

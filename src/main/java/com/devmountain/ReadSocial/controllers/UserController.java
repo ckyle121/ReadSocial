@@ -1,15 +1,15 @@
 package com.devmountain.ReadSocial.controllers;
 
+import com.devmountain.ReadSocial.dtos.BookDto;
 import com.devmountain.ReadSocial.dtos.UserDto;
+import com.devmountain.ReadSocial.entities.User;
 import com.devmountain.ReadSocial.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -19,6 +19,12 @@ public class UserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @GetMapping("/{userId}")
+    public Optional<UserDto> getUserById(@PathVariable Long userId){
+
+        return userService.getUserById(userId);
+    }
 
     @PostMapping("/register")
     public List<String> addUser(@RequestBody UserDto userDto){
