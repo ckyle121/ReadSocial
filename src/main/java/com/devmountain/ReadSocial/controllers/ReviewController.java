@@ -3,6 +3,8 @@ package com.devmountain.ReadSocial.controllers;
 import com.devmountain.ReadSocial.dtos.ReviewDto;
 import com.devmountain.ReadSocial.entities.Book;
 import com.devmountain.ReadSocial.entities.User;
+import com.devmountain.ReadSocial.repositories.BookRepository;
+import com.devmountain.ReadSocial.repositories.UserRepository;
 import com.devmountain.ReadSocial.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,10 @@ import java.util.Optional;
 public class ReviewController {
     @Autowired
     private ReviewService reviewService;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private BookRepository bookRepository;
 
     @GetMapping("/")
     public List<ReviewDto> getAllReviews(){
@@ -23,6 +29,7 @@ public class ReviewController {
 
     @PostMapping("/")
     public void addReview(@RequestBody ReviewDto reviewDto){
+
         reviewService.addReview(reviewDto, reviewDto.getUserDto().getId(), reviewDto.getBookDto().getId());
     }
 
