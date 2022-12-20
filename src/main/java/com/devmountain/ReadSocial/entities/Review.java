@@ -41,4 +41,7 @@ public class Review {
             this.book_rating = reviewDto.getBook_rating();
         }
     }
+
+    public void setbookDto(Book book) {
+    }
 }

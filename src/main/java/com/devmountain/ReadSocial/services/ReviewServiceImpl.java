@@ -48,6 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<ReviewDto> getAllReviewsByBookId(Long bookId) {
         Optional<Book> bookOptional = bookRepository.findById(bookId);
+        System.out.println(bookId);
         if(bookOptional.isPresent()){
             List<Review> reviewList = reviewRepository.findAllByBookEquals(bookOptional.get());
             return reviewList.stream().map(review -> new ReviewDto(review)).collect(Collectors.toList());

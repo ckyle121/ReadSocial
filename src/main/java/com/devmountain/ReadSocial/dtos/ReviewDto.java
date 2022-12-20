@@ -12,7 +12,9 @@ public class ReviewDto {
     private Long id;
     private String review_text;
     private Integer book_rating;
+
     private UserDto userDto;
+
     private BookDto bookDto;
 
     public ReviewDto(Review review){
@@ -25,5 +27,6 @@ public class ReviewDto {
         if (review.getBook_rating() != null){
             this.book_rating = review.getBook_rating();
         }
+
     }
 }
