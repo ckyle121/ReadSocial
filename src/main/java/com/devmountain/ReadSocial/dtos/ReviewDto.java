@@ -29,6 +29,5 @@ public class ReviewDto implements Serializable {
         if (review.getBook_rating() != null){
             this.book_rating = review.getBook_rating();
         }
-
     }
 }
