@@ -14,11 +14,6 @@ public interface ReviewService {
     @Transactional
     void addReview(ReviewDto reviewDto, Long userId, Long bookId);
 
-//    @Transactional
-//    void addReviewToBook(ReviewDto reviewDto, Long bookId);
-//
-//    @Transactional
-//    void addReviewToUser(ReviewDto reviewDto, Long userId);
     @Transactional
     void deleteReviewById(Long reviewId);
 
