@@ -57,7 +57,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Transactional
-    public void addReview(ReviewDto reviewDto, Long userId, Long bookId){
+    public void addReview(ReviewDto reviewDto){
         Optional<User> userOptional = userRepository.findById(userId);
         Optional<Book> bookOptional = bookRepository.findById(bookId);
         Review review = new Review(reviewDto);
