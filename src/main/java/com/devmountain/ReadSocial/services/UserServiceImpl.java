@@ -1,5 +1,7 @@
 package com.devmountain.ReadSocial.services;
 
+import com.devmountain.ReadSocial.dtos.ReviewDto;
+import com.devmountain.ReadSocial.entities.Review;
 import com.devmountain.ReadSocial.entities.User;
 import com.devmountain.ReadSocial.dtos.UserDto;
 import com.devmountain.ReadSocial.repositories.UserRepository;
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService {
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
         userRepository.saveAndFlush(user);
-        response.add("http://localhost:8080/all-reviews.html");
+        response.add("http://localhost:8080/login.html");
         return response;
     }
 
@@ -35,7 +37,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findByUsername(userDto.getUsername());
         if (userOptional.isPresent()){
             if (passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())){
-                response.add("http://localhost:8080/all-reviews.html");
+                response.add("http://localhost:8080/dashboard.html");
                 response.add(String.valueOf(userOptional.get().getId()));
             } else {
                 response.add("Username or password incorrect");
@@ -44,5 +46,14 @@ public class UserServiceImpl implements UserService {
             response.add("Username or password incorrect");
         }
         return response;
+    }
+
+    @Override
+    public Optional<UserDto> getUserById(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if(userOptional.isPresent()){
+            return Optional.of(new UserDto(userOptional.get()));
+        }
+        return Optional.empty();
     }
 }

@@ -23,7 +23,7 @@ public class ReviewController {
 
     @PostMapping("/")
     public void addReview(@RequestBody ReviewDto reviewDto){
-        reviewService.addReview(reviewDto, userId, bookId);
+        reviewService.addReview(reviewDto, reviewDto.getUserDto().getId(), reviewDto.getBookDto().getId());
     }
 
 
