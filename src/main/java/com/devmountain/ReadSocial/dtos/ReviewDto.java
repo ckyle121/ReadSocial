@@ -31,5 +31,9 @@ public class ReviewDto {
         this.bookDto.setPoster(review.getBook().getPoster());
         this.bookDto.setTitle(review.getBook().getTitle());
         this.bookDto.setId(review.getBook().getId());
+        this.userDto = new UserDto();
+        this.userDto.setUsername(review.getUser().getUsername());
+        this.userDto.setPassword(review.getUser().getPassword());
+        this.userDto.setId(review.getUser().getId());
     }
 }

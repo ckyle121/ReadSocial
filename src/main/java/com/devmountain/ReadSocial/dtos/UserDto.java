@@ -24,7 +24,7 @@ public class UserDto {
         if (user.getUsername() != null){
             this.username = user.getUsername();
         }
-        if (user.getPassword() != null){
+        if (user.getPassword() != null) {
             this.password = user.getPassword();
         }
     }
