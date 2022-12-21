@@ -28,12 +28,12 @@ public class Review {
     // Associations
 
     @ManyToOne
-    @JoinColumn(name="user_id",referencedColumnName = "id")
+    @JsonBackReference
     private User user;
 
 
     @ManyToOne()
-    @JoinColumn(name = "book_id", referencedColumnName = "id")
+    @JsonBackReference
     private Book book;
 
     public Review(ReviewDto reviewDto){

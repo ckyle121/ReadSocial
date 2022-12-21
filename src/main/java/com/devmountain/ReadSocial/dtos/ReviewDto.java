@@ -27,6 +27,9 @@ public class ReviewDto {
         if (review.getBook_rating() != null){
             this.book_rating = review.getBook_rating();
         }
-
+        this.bookDto = new BookDto();
+        this.bookDto.setPoster(review.getBook().getPoster());
+        this.bookDto.setTitle(review.getBook().getTitle());
+        this.bookDto.setId(review.getBook().getId());
     }
 }
