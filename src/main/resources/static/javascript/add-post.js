@@ -5,14 +5,14 @@ const userId = cookieArr[1];
 console.log(userId);
 
 const baseUrl = "http://localhost:8080/api/v1/reviews/"
-const bookBaseUrl = "http://localhost:8080/api/v1/books"
+const bookBaseUrl = "http://localhost:8080/api/v1/books/"
 
 async function newFormHandler(event) {
   event.preventDefault();
 
   const book_id = currentBook.book_id;
 
-  await fetch(`${baseUrl}/user/${userId}`, {
+  await fetch(`${baseUrl}user/${userId}`, {
     method: "GET",
   })
     .then((response) => response.json())
@@ -39,13 +39,13 @@ async function postBook() {
     .querySelector(".rating")
     .querySelectorAll(".fas").length;
 
-  const bookResponse = await fetch(`${bookBaseUrl}/${book_id}`, {
+  const bookResponse = await fetch(`${bookBaseUrl}${book_id}`, {
     method: "GET",
   });
   // check to see if the book is in the database first
   if (!bookResponse.ok) {
     // if not, add it
-    const postNewBook = await fetch(`${bookBaseUrl}/${book_id}`, {
+    const postNewBook = await fetch(`${bookBaseUrl}`, {
       method: "POST",
       body: JSON.stringify({
         book_id,
@@ -71,10 +71,13 @@ async function postBook() {
       },
    });
 
-  if (review.ok) {
+  if (response.ok) {
     document.location.replace("http://localhost:8080/dashboard.html");
+    console.log(bookResponse);
+    console.log(review)
   } else {
-  console.log(review);
+    console.log(bookResponse);
+    alert(bookResponse.statusText);
   }
 }
 

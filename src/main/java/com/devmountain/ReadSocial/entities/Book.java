@@ -20,7 +20,6 @@ import java.util.Set;
 @NoArgsConstructor
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title")
@@ -35,6 +34,9 @@ public class Book {
     private Set<Review> reviewSet = new HashSet<>();
 
     public Book(BookDto bookDto){
+        if (bookDto.getId() != null){
+            this.id = bookDto.getId();
+        }
         if (bookDto.getTitle() != null){
             this.title = bookDto.getTitle();
         }
