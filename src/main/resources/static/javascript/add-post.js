@@ -2,7 +2,6 @@ const bookList = document.querySelector("#booklist");
 let currentBook = {};
 const cookieArr = document.cookie.split("=")
 const userId = parseInt(cookieArr[1]);
-console.log(userId);
 
 const baseUrl = "http://localhost:8080/api/v1/reviews/"
 const bookBaseUrl = "http://localhost:8080/api/v1/books/"
@@ -74,12 +73,8 @@ async function postBook() {
 
   if (review.ok) {
     document.location.replace("http://localhost:8080/dashboard.html");
-    console.log(bookResponse);
-    console.log(review)
   } else {
-    console.log(bookResponse);
-    alert(bookResponse.statusText);
-        console.log(review)
+    alert(review.statusText);
   }
 }
 
