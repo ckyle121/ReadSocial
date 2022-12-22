@@ -1,7 +1,7 @@
 const bookList = document.querySelector("#booklist");
 let currentBook = {};
 const cookieArr = document.cookie.split("=")
-const userId = cookieArr[1];
+const userId = parseInt(cookieArr[1]);
 console.log(userId);
 
 const baseUrl = "http://localhost:8080/api/v1/reviews/"
@@ -10,7 +10,7 @@ const bookBaseUrl = "http://localhost:8080/api/v1/books/"
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const book_id = currentBook.book_id;
+  const bookId = currentBook.bookId;
 
   await fetch(`${baseUrl}user/${userId}`, {
     method: "GET",
@@ -18,7 +18,7 @@ async function newFormHandler(event) {
     .then((response) => response.json())
     .then((result) => {
       const previousReviews = result.filter(
-        (book) => book.book_id === book_id
+        (book) => book.bookId === bookId
       );
       if (previousReviews.length === 0) {
         postBook();
@@ -29,7 +29,7 @@ async function newFormHandler(event) {
 }
 
 async function postBook() {
-  const book_id = currentBook.book_id;
+  const bookId = currentBook.bookId;
   const title = currentBook.title;
   const poster = currentBook.poster;
   const review_text = document.querySelector(
@@ -39,7 +39,7 @@ async function postBook() {
     .querySelector(".rating")
     .querySelectorAll(".fas").length;
 
-  const bookResponse = await fetch(`${bookBaseUrl}${book_id}`, {
+  const bookResponse = await fetch(`${bookBaseUrl}${bookId}`, {
     method: "GET",
   });
   // check to see if the book is in the database first
@@ -48,7 +48,7 @@ async function postBook() {
     const postNewBook = await fetch(`${bookBaseUrl}`, {
       method: "POST",
       body: JSON.stringify({
-        book_id,
+        bookId,
         title,
         poster,
       }),
@@ -58,10 +58,11 @@ async function postBook() {
     });
   }
 
+
    const review = await fetch(`${baseUrl}`, {
       method: "POST",
       body: JSON.stringify({
-         book_id,
+         bookId,
          book_rating,
          review_text,
          userId
@@ -71,13 +72,14 @@ async function postBook() {
       },
    });
 
-  if (response.ok) {
+  if (review.ok) {
     document.location.replace("http://localhost:8080/dashboard.html");
     console.log(bookResponse);
     console.log(review)
   } else {
     console.log(bookResponse);
     alert(bookResponse.statusText);
+        console.log(review)
   }
 }
 
@@ -92,11 +94,11 @@ document.addEventListener("click", function (e) {
       e.target.parentElement.parentElement.childNodes[1].textContent;
     document.querySelector("#bookReviewLabel").innerText = title;
     // get the book id
-    const book_id =
-      e.target.parentElement.parentElement.getAttribute("data-id");
+    const bookId =
+      parseInt(e.target.parentElement.parentElement.getAttribute("data-id"))
     document
       .querySelector("#bookReviewLabel")
-      .setAttribute("data-id", book_id);
+      .setAttribute("data-id", bookId);
     // get the poster source
     const posterLength =
       e.target.parentElement.parentElement.getAttribute("style").length;
@@ -105,6 +107,6 @@ document.addEventListener("click", function (e) {
       .substr(23, posterLength - 25);
     document.querySelector("#book-poster").setAttribute("src", poster);
 
-    currentBook = { title: title, book_id: book_id, poster: poster };
+    currentBook = { title: title, bookId: bookId, poster: poster };
   }
 });
