@@ -22,8 +22,7 @@ function bookSearch() {
     )
       .then((response) => response.json())
       .then((result) => {
-      console.log("something there")
-        showBooks(result);
+      showBooks(result);
       })
       .catch((error) => {
         console.log("error", error);
@@ -36,7 +35,6 @@ function bookSearch() {
 }
 
 function showBooks(books) {
-    console.log("function started")
   const bookList = document.querySelector("#bookList");
   // if bookList has child elements, remove them for the next search
   while (bookList.firstChild) {
@@ -52,14 +50,6 @@ function showBooks(books) {
       for (pos = 0; pos < len; pos++) {
         out += (str.charCodeAt(pos) - 64) * Math.pow(26, len - pos - 1);
       }
-      console.log(out);
-//      let place = 1
-//      let num = 0
-//      while(array.length ){
-//        num += parseInt(array.pop()) * place
-//        place *= 10
-//      }
-//      console.log(num);
       return out;
 
     }
