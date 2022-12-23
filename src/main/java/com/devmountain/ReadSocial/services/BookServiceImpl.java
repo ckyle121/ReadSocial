@@ -40,6 +40,15 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Optional<BookDto> getBookByGoogleId(String googleId){
+        Optional<Book> bookOptional = bookRepository.findByGoogleId(googleId);
+        if (bookOptional.isPresent()){
+            return Optional.of(new BookDto(bookOptional.get()));
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public Optional<BookDto> getBookById(Long bookId) {
         Optional<Book> bookOptional = bookRepository.findById(bookId);
         if(bookOptional.isPresent()){

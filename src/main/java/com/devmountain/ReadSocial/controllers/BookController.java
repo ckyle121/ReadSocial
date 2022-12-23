@@ -22,4 +22,9 @@ public class BookController {
     public Optional<BookDto> getBookById(@PathVariable Long bookId){
         return bookService.getBookById(bookId);
     }
+
+    @GetMapping("/{googleId}")
+    public Optional<BookDto> getBookByGoogleId(@PathVariable String googleId){
+        return bookService.getBookByGoogleId(googleId);
+    }
 }
