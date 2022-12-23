@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookService {
-    //List<BookDto> getAllBooksByUserId(Long userId);
-
     @Transactional
     void addBook(BookDto bookDto);
 

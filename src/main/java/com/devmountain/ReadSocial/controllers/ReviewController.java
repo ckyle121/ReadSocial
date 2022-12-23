@@ -31,11 +31,6 @@ public class ReviewController {
         System.out.println("Added Review");
     }
 
-//    @PostMapping("/")
-//    public void addBook(@RequestBody ReviewDto reviewDto){
-//
-//        reviewService.addReview(reviewDto);
-//    }
 
     @GetMapping("/user/{userId}")
     public List<ReviewDto> getReviewsByUser(@PathVariable Long userId){

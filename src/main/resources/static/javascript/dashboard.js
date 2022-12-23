@@ -1,5 +1,6 @@
 const cookieArr = document.cookie.split("=")
-const userId = cookieArr[1];
+const userId = parseInt(cookieArr[1]);
+console.log(userId);
 
 //DOM elements
 const userReviewContainer = document.getElementById("user-reviews");
@@ -15,9 +16,9 @@ async function getReviewsByUser(userId){
     method: "GET",
             headers: headers
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.error(err))
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err))
 }
 
 const createReviewCards = (array) => {

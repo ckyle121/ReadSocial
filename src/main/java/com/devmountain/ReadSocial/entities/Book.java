@@ -20,6 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class Book {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title")
@@ -27,6 +28,9 @@ public class Book {
 
     @Column(name = "poster")
     private String poster;
+
+    @Column(name="googleId")
+    private String googleId;
 
     // Associations
     @OneToMany(mappedBy = "book")

@@ -68,8 +68,6 @@ public class ReviewServiceImpl implements ReviewService {
         bookOptional.ifPresent(System.out::println);
         userOptional.ifPresent(review::setUser);
         userOptional.ifPresent(System.out::println);
-        userOptional.ifPresent(review::setUser);
-        userOptional.ifPresent(System.out::println);
         System.out.println(review);
         reviewRepository.saveAndFlush(review);
     }

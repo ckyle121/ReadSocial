@@ -16,6 +16,8 @@ public class BookDto {
     private String title;
     private String poster;
 
+    private String googleId;
+
     private Set<ReviewDto> reviewDtoSet = new HashSet<>();
     public BookDto(Book book){
         if (book.getId() != null){
@@ -26,6 +28,9 @@ public class BookDto {
         }
         if (book.getPoster() != null){
             this.poster = book.getPoster();
+        }
+        if (book.getGoogleId() != null){
+            this.googleId = book.getGoogleId();
         }
     }
 }
