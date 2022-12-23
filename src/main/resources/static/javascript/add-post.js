@@ -4,19 +4,13 @@ const cookieArr = document.cookie.split("=")
 const userId = parseInt(cookieArr[1]);
 console.log(userId);
 
-//const bookId = currentBook.bookId;
-//const title = currentBook.title;
-//const poster = currentBook.poster;
-//const review_text = document.querySelector('textarea[name="post-text"]').value;
-//const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
-
 const baseUrl = "http://localhost:8080/api/v1/reviews/"
 const bookBaseUrl = "http://localhost:8080/api/v1/books/"
 
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const bookId = currentBook.bookId;
+  const googleId = currentBook.googleId;
 
   await fetch(`${baseUrl}user/${userId}`, {
     method: "GET",
@@ -24,7 +18,7 @@ async function newFormHandler(event) {
     .then((response) => response.json())
     .then((result) => {
       const previousReviews = result.filter(
-        (book) => book.bookId === bookId
+        (book) => book.googleId === googleId
       );
       if (previousReviews.length === 0) {
         postBookReview();
@@ -35,26 +29,23 @@ async function newFormHandler(event) {
 }
 
 async function postBookReview() {
-    const bookId = currentBook.bookId;
+    const googleId = currentBook.googleId;
     const title = currentBook.title;
     const poster = currentBook.poster;
     const review_text = document.querySelector('textarea[name="post-text"]').value;
     const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
 
-  const bookResponse = await fetch(`${bookBaseUrl}${bookId}`, {
+  const bookResponse = await fetch(`${bookBaseUrl}${googleId}`, {
     method: "GET",
   });
+
   // check to see if the book is in the database first
-  console.log(bookResponse.json())
-  bookResponse = bookResponse.json()
-  const promise = bookResponse.json().Promise.PromiseResult
-  console.log(promise)
-  if (bookResponse) {
+  if (bookResponse.status === 500) {
     // if not, add it
     const postNewBook = await fetch(`${bookBaseUrl}`, {
       method: "POST",
       body: JSON.stringify({
-        bookId,
+        googleId,
         title,
         poster,
       }),
@@ -64,27 +55,29 @@ async function postBookReview() {
     });
   }
 
-   const review = await fetch(`${baseUrl}`, {
-      method: "POST",
-      body: JSON.stringify({
-         bookId,
-         book_rating,
-         review_text,
-         userId
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-   });
+  console.log(bookResponse);
+//
+//   const review = await fetch(`${baseUrl}`, {
+//      method: "POST",
+//      body: JSON.stringify({
+//         googleId
+//         book_rating,
+//         review_text,
+//         userId
+//      }),
+//      headers: {
+//        "Content-Type": "application/json",
+//      },
+//   });
 
-  if (review.ok) {
-    //document.location.replace("http://localhost:8080/dashboard.html");
-    console.log(bookResponse);
-  } else {
-    console.log(bookResponse);
-    alert(bookResponse.statusText);
-        console.log(review)
-  }
+//  if (review.ok) {
+//    //document.location.replace("http://localhost:8080/dashboard.html");
+//    console.log(bookResponse);
+//  } else {
+//    console.log(bookResponse);
+//    alert(bookResponse.statusText);
+//        console.log(review)
+//  }
 }
 
 document
@@ -100,13 +93,13 @@ document.addEventListener("click", function (e) {
 
     document.querySelector("#bookReviewLabel").innerText = title;
 
-    // get the book id
-    const bookId =
+    // get the google books api id
+    const googleId =
       parseInt(e.target.parentElement.parentElement.getAttribute("data-id"))
 
     document
       .querySelector("#bookReviewLabel")
-      .setAttribute("data-id", bookId);
+      .setAttribute("data-id", googleId);
 
     // get the poster source
     const posterLength =
@@ -117,6 +110,6 @@ document.addEventListener("click", function (e) {
 
     document.querySelector("#book-poster").setAttribute("src", poster);
 
-    currentBook = { title: title, bookId: bookId, poster: poster };
+    currentBook = { title: title, googleId: googleId, poster: poster };
   }
 });
