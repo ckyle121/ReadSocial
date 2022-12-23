@@ -38,9 +38,12 @@ async function postBook() {
     .querySelector(".rating")
     .querySelectorAll(".fas").length;
 
+    console.log(bookId);
   const bookResponse = await fetch(`${bookBaseUrl}${bookId}`, {
     method: "GET",
   });
+
+  console.log("Hello");
   // check to see if the book is in the database first
   if (!bookResponse.ok) {
     // if not, add it
@@ -57,6 +60,7 @@ async function postBook() {
     });
   }
 
+  console.log(bookResponse);
 
    const review = await fetch(`${baseUrl}`, {
       method: "POST",
