@@ -76,7 +76,8 @@ async function postBook() {
    });
 
   if (review.ok) {
-    document.location.replace("http://localhost:8080/dashboard.html");
+  console.log(review);
+    //document.location.replace("http://localhost:8080/dashboard.html");
   } else {
     alert(review.statusText);
   }

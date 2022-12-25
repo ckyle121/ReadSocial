@@ -50,7 +50,7 @@ function showBooks(books) {
       for (pos = 0; pos < len; pos++) {
         out += (str.charCodeAt(pos) - 64) * Math.pow(26, len - pos - 1);
       }
-      return out;
+      return Math.abs(out);
 
     }
     let id = convertLetterToNumber(books.items[i].id)

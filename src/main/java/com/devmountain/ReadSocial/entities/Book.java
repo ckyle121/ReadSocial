@@ -44,4 +44,5 @@ public class Book {
             this.poster = bookDto.getPoster();
         }
     }
+
 }

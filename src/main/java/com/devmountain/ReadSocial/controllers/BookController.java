@@ -24,9 +24,7 @@ public class BookController {
     }
 
     @GetMapping("/{bookId}")
-    public Optional<BookDto> getBookById(@PathVariable Long bookId){
-        Optional<BookDto> bookDto = bookService.getBookById(bookId);
-
-        return bookDto.orElseThrow().asDto();
+    public Object getBookById(@PathVariable Long bookId){
+        return bookService.getBookById(bookId);
     }
 }
