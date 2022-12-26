@@ -8,23 +8,23 @@ const bookBaseUrl = "http://localhost:8080/api/v1/books/"
 
 async function newFormHandler(event) {
   event.preventDefault();
-
-  const bookId = currentBook.bookId;
-
-  await fetch(`${baseUrl}user/${userId}`, {
-    method: "GET",
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      const previousReviews = result.filter(
-        (book) => book.bookId === bookId
-      );
-      if (previousReviews.length === 0) {
-        postBook();
-      } else {
-        alert("You've already reviewed that book!");
-      }
-    });
+    postBook();
+//  const bookId = currentBook.bookId;
+//
+//  await fetch(`${baseUrl}user/${userId}`, {
+//    method: "GET",
+//  })
+//    .then((response) => response.json())
+//    .then((result) => {
+//      const previousReviews = result.filter(
+//        (book) => book.bookId === bookId
+//      );
+//      if (previousReviews.length === 0) {
+//        postBook();
+//      } else {
+//        alert("You've already reviewed that book!");
+//      }
+//    });
 }
 
 async function postBook() {
