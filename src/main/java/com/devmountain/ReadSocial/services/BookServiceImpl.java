@@ -24,11 +24,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Object getBookById(Long bookId) {
+    public Optional<BookDto> getBookById(Long bookId) {
         Optional<Book> bookOptional = bookRepository.findById(bookId);
-        if (bookOptional.isPresent()){
+        if(bookOptional.isPresent()){
             return Optional.of(new BookDto(bookOptional.get()));
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST);
+        return Optional.empty();
     }
 }

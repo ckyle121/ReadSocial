@@ -20,7 +20,11 @@ import java.util.Set;
 @NoArgsConstructor
 public class Book {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="googleId")
+    private Long gooleId;
 
     @Column(name = "title")
     private String title;
@@ -36,6 +40,9 @@ public class Book {
     public Book(BookDto bookDto){
         if (bookDto.getId() != null){
             this.id = bookDto.getId();
+        }
+        if (bookDto.getGooleId() != null){
+            this.gooleId = bookDto.getGooleId();
         }
         if (bookDto.getTitle() != null){
             this.title = bookDto.getTitle();

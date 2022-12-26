@@ -13,13 +13,19 @@ import java.util.Set;
 @NoArgsConstructor
 public class BookDto {
     private Long id;
+
+    private Long gooleId;
     private String title;
     private String poster;
+
 
     private Set<ReviewDto> reviewDtoSet = new HashSet<>();
     public BookDto(Book book){
         if (book.getId() != null){
             this.id = book.getId();
+        }
+        if (book.getGooleId() != null) {
+            this.gooleId = book.getGooleId();
         }
         if (book.getTitle() != null){
             this.title = book.getTitle();
