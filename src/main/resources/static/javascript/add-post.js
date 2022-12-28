@@ -12,11 +12,11 @@ async function newFormHandler(event) {
 }
 
 async function postBook() {
-  const bookId = currentBook.bookId;
+  const googleId = currentBook.googleId;
   const title = currentBook.title;
   const poster = currentBook.poster;
 
-  console.log(bookId);
+  console.log(googleId);
   console.log(title);
   console.log(poster);
 
@@ -25,7 +25,7 @@ async function postBook() {
   const postNewBook = await fetch(`${bookBaseUrl}`, {
       method: "POST",
       body: JSON.stringify({
-        bookId,
+        googleId,
         title,
         poster,
       }),
@@ -41,14 +41,13 @@ async function postBook() {
 }
 
 async function postReview(){
-
     const review_text = document.querySelector('textarea[name="post-text"]').value;
     const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
 
      const postNewReview = await fetch(`${baseUrl}`, {
           method: "POST",
           body: JSON.stringify({
-             bookId,
+             googleId,
              book_rating,
              review_text,
              userId
@@ -75,11 +74,11 @@ document.addEventListener("click", function (e) {
       e.target.parentElement.parentElement.childNodes[1].textContent;
     document.querySelector("#bookReviewLabel").innerText = title;
     // get the book id
-    const bookId =
+    const googleId =
       parseInt(e.target.parentElement.parentElement.getAttribute("data-id"))
     document
       .querySelector("#bookReviewLabel")
-      .setAttribute("data-id", bookId);
+      .setAttribute("data-id", googleId);
     // get the poster source
     const posterLength =
       e.target.parentElement.parentElement.getAttribute("style").length;
@@ -88,6 +87,6 @@ document.addEventListener("click", function (e) {
       .substr(23, posterLength - 25);
     document.querySelector("#book-poster").setAttribute("src", poster);
 
-    currentBook = { title: title, bookId: bookId, poster: poster };
+    currentBook = { title: title, googleId: googleId, poster: poster };
   }
 });
