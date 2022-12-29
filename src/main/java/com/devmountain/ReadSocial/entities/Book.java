@@ -24,7 +24,7 @@ public class Book {
     private Long id;
 
     @Column(name="googleId")
-    private Long gooleId;
+    private String googleId;
 
     @Column(name = "title")
     private String title;
@@ -41,8 +41,8 @@ public class Book {
         if (bookDto.getId() != null){
             this.id = bookDto.getId();
         }
-        if (bookDto.getGooleId() != null){
-            this.gooleId = bookDto.getGooleId();
+        if (bookDto.getGoogleId() != null){
+            this.googleId = bookDto.getGoogleId();
         }
         if (bookDto.getTitle() != null){
             this.title = bookDto.getTitle();

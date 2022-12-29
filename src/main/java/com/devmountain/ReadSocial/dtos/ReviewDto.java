@@ -30,7 +30,7 @@ public class ReviewDto {
         this.bookDto = new BookDto();
         this.bookDto.setPoster(review.getBook().getPoster());
         this.bookDto.setTitle(review.getBook().getTitle());
-        this.bookDto.setGooleId(review.getBook().getGooleId());
+        this.bookDto.setGoogleId(review.getBook().getGoogleId());
         this.bookDto.setId(review.getBook().getId());
         this.userDto = new UserDto();
         this.userDto.setUsername(review.getUser().getUsername());

@@ -44,10 +44,12 @@ async function postReview(){
     const review_text = document.querySelector('textarea[name="post-text"]').value;
     const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
 
+
+
      const postNewReview = await fetch(`${baseUrl}`, {
           method: "POST",
           body: JSON.stringify({
-             googleId,
+             bookId,
              book_rating,
              review_text,
              userId

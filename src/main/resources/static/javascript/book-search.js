@@ -55,7 +55,7 @@ function showBooks(books) {
     }
     let id = convertLetterToNumber(books.items[i].id)
     temp += `
-    <div class="userCard" data-id=${id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">
+    <div class="userCard" data-id=${books.items[i].id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">
       <h3 class="title book-name">${books.items[i].volumeInfo.title}</h3>
       <div class="inner-text">${books.items[i].volumeInfo.description.substr(0,6)}</div>
       <div class="bottom-button">

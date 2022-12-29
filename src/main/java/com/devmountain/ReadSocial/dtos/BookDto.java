@@ -14,7 +14,7 @@ import java.util.Set;
 public class BookDto {
     private Long id;
 
-    private Long gooleId;
+    private String googleId;
     private String title;
     private String poster;
 
@@ -24,8 +24,8 @@ public class BookDto {
         if (book.getId() != null){
             this.id = book.getId();
         }
-        if (book.getGooleId() != null) {
-            this.gooleId = book.getGooleId();
+        if (book.getGoogleId() != null) {
+            this.googleId = book.getGoogleId();
         }
         if (book.getTitle() != null){
             this.title = book.getTitle();
