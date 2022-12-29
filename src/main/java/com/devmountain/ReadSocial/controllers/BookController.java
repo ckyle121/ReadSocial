@@ -6,6 +6,7 @@ import com.devmountain.ReadSocial.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
@@ -22,6 +23,9 @@ public class BookController {
     public void addBook(@RequestBody BookDto bookDto){
         bookService.addBook(bookDto);
     }
+
+    @GetMapping("/{googleId}")
+    public Optional<BookDto> getBookByGoogleId(@PathVariable String googleId){ return bookService.getBookByGoogleId(googleId);}
 
     @GetMapping("/{bookId}")
     public Optional<BookDto> getBookById(@PathVariable Long bookId){

@@ -11,8 +11,8 @@ public interface BookService {
 
     @Transactional
     void addBook(BookDto bookDto);
-    
-    Optional<BookDto> getBookByGoogleId(BookDto bookDto);
+
+    Optional<BookDto> getBookByGoogleId(String googleId);
 
     Optional<BookDto> getBookById(Long bookId);
 }

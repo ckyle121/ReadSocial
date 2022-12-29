@@ -43,16 +43,16 @@ function showBooks(books) {
 
   //  for loop for top 5 books of the search
   let temp = "";
-  for (let i = 0; i < 5; i++) {
-    function convertLetterToNumber(str) {
-      var out = 0,
-      len = str.length;
-      for (pos = 0; pos < len; pos++) {
-        out += (str.charCodeAt(pos) - 64) * Math.pow(26, len - pos - 1);
-      }
-      return Math.abs(out);
-
-    }
+//  for (let i = 0; i < 5; i++) {
+//    function convertLetterToNumber(str) {
+//      var out = 0,
+//      len = str.length;
+//      for (pos = 0; pos < len; pos++) {
+//        out += (str.charCodeAt(pos) - 64) * Math.pow(26, len - pos - 1);
+//      }
+//      return Math.abs(out);
+//
+//    }
     let id = convertLetterToNumber(books.items[i].id)
     temp += `
     <div class="userCard" data-id=${books.items[i].id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">

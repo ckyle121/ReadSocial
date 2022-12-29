@@ -44,6 +44,7 @@ async function postReview(){
     const review_text = document.querySelector('textarea[name="post-text"]').value;
     const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
 
+    const getBookId = await fetch(`$bookBaseUrl`)
 
 
      const postNewReview = await fetch(`${baseUrl}`, {
