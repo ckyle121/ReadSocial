@@ -19,6 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Id
