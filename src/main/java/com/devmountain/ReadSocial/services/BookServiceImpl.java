@@ -26,8 +26,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Optional<BookDto> getBookByGoogleId(String googleId){
-        List<String> response = new ArrayList<>();
+    public Optional<BookDto> getBookByGoogleId(Long googleId){
         Optional<Book> bookOptional = bookRepository.findByGoogleId(googleId);
         if (bookOptional.isPresent()){
             return Optional.of(new BookDto(bookOptional.get()));

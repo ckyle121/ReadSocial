@@ -15,11 +15,12 @@ async function postBook() {
   const googleId = currentBook.googleId;
   const title = currentBook.title;
   const poster = currentBook.poster;
+  const review_text = document.querySelector('textarea[name="post-text"]').value;
+  const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
 
   console.log(googleId);
   console.log(title);
   console.log(poster);
-
 
   // add book to data base first
   const postNewBook = await fetch(`${bookBaseUrl}`, {
@@ -35,35 +36,23 @@ async function postBook() {
    })
    .catch(err => console.log(err.message))
 
-   if (postNewBook.ok){
-        postReview();
-   }
-}
+   const postNewReview = await fetch(`${baseUrl}`, {
+             method: "POST",
+             body: JSON.stringify({
+                googleId,
+                book_rating,
+                review_text,
+                userId
+             }),
+             headers: {
+               "Content-Type": "application/json",
+             },
+          })
+  .catch(err => console.error(err.message))
 
-async function postReview(){
-    const review_text = document.querySelector('textarea[name="post-text"]').value;
-    const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
-
-    const getBookId = await fetch(`$bookBaseUrl`)
-
-
-     const postNewReview = await fetch(`${baseUrl}`, {
-          method: "POST",
-          body: JSON.stringify({
-             bookId,
-             book_rating,
-             review_text,
-             userId
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-       })
-     .catch(err => console.error(err.message))
-
-     if (postNewReview.ok){
-        document.location.replace("http://localhost:8080/dashboard.html");
-       }
+  if (postNewReview.ok){
+     document.location.replace("http://localhost:8080/dashboard.html");
+  }
 }
 
 document

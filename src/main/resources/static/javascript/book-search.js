@@ -43,19 +43,19 @@ function showBooks(books) {
 
   //  for loop for top 5 books of the search
   let temp = "";
-//  for (let i = 0; i < 5; i++) {
-//    function convertLetterToNumber(str) {
-//      var out = 0,
-//      len = str.length;
-//      for (pos = 0; pos < len; pos++) {
-//        out += (str.charCodeAt(pos) - 64) * Math.pow(26, len - pos - 1);
-//      }
-//      return Math.abs(out);
-//
-//    }
+  for (let i = 0; i < 5; i++) {
+    function convertLetterToNumber(str) {
+      var out = 0,
+      len = str.length;
+      for (pos = 0; pos < len; pos++) {
+        out += (str.charCodeAt(pos) - 64) * Math.pow(26, len - pos - 1);
+      }
+      return Math.abs(out);
+
+    }
     let id = convertLetterToNumber(books.items[i].id)
     temp += `
-    <div class="userCard" data-id=${books.items[i].id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">
+    <div class="userCard" data-id=${id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">
       <h3 class="title book-name">${books.items[i].volumeInfo.title}</h3>
       <div class="inner-text">${books.items[i].volumeInfo.description.substr(0,6)}</div>
       <div class="bottom-button">

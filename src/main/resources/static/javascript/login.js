@@ -19,7 +19,6 @@ async function loginFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
 
-    //let number = Math.floor(Math.random()*1000000);
     const responseArr = await response.json()
 
     if (response.status === 200){

@@ -8,7 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    //List<Book> findAllByUserEquals(Review review);
-
-    Optional<Book> findByGoogleId(String googleId);
+    Optional<Book> findByGoogleId(Long googleId);
 }

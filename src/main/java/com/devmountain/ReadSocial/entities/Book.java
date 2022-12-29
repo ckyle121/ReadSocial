@@ -19,12 +19,11 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Id
     @Column(name="googleId")
-    private String googleId;
+    private Long googleId;
 
     @Column(name = "title")
     private String title;

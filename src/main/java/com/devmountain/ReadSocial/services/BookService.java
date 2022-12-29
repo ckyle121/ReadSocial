@@ -12,7 +12,7 @@ public interface BookService {
     @Transactional
     void addBook(BookDto bookDto);
 
-    Optional<BookDto> getBookByGoogleId(String googleId);
+    Optional<BookDto> getBookByGoogleId(Long googleId);
 
     Optional<BookDto> getBookById(Long bookId);
 }

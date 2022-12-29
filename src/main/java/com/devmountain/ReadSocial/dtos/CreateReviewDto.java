@@ -7,4 +7,5 @@ public class CreateReviewDto {
 
     public Long userId;
     public Long bookId;
+    public Long googleId;
 }
