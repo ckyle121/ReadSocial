@@ -67,7 +67,7 @@ document.addEventListener("click", function (e) {
     document.querySelector("#bookReviewLabel").innerText = title;
     // get the book id
     const googleId =
-      parseInt(e.target.parentElement.parentElement.getAttribute("data-id"))
+      e.target.parentElement.parentElement.getAttribute("data-id")
     document
       .querySelector("#bookReviewLabel")
       .setAttribute("data-id", googleId);

@@ -14,7 +14,7 @@ import java.util.Set;
 public class BookDto {
     private Long id;
 
-    private Long googleId;
+    private String googleId;
     private String title;
     private String poster;
 

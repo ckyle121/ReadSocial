@@ -19,12 +19,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
-
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Id
-    @Column(name="googleId")
-    private Long googleId;
+
+    @Column(name="googleId", unique = true)
+    private String googleId;
 
     @Column(name = "title")
     private String title;
@@ -33,7 +33,7 @@ public class Book {
     private String poster;
 
     // Associations
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonManagedReference
     private Set<Review> reviewSet = new HashSet<>();
 

@@ -25,7 +25,7 @@ public class BookController {
     }
 
     @GetMapping("/{googleId}")
-    public Optional<BookDto> getBookByGoogleId(@PathVariable Long googleId){ return bookService.getBookByGoogleId(googleId);}
+    public Optional<BookDto> getBookByGoogleId(@PathVariable String googleId){ return bookService.getBookByGoogleId(googleId);}
 
     @GetMapping("/{bookId}")
     public Optional<BookDto> getBookById(@PathVariable Long bookId){

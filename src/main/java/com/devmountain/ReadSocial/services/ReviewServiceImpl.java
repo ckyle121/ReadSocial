@@ -58,10 +58,10 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public void addReview(ReviewDto reviewDto, Long userId, Long googleId){
+    public void addReview(ReviewDto reviewDto, Long userId, String googleId){
         Optional<User> userOptional = userRepository.findById(userId);
         System.out.println("userId = " + userId);
-        Optional<Book> bookOptional = bookRepository.findById(googleId);
+        Optional<Book> bookOptional = bookRepository.findByGoogleId(googleId);
         System.out.println(bookOptional.isPresent());
         Review review = new Review(reviewDto);
         bookOptional.ifPresent(review::setBook);
