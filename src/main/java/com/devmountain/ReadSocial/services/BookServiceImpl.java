@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +23,16 @@ public class BookServiceImpl implements BookService {
     public void addBook(BookDto bookDto) {
         Book book = new Book(bookDto);
         bookRepository.saveAndFlush(book);
+    }
+
+    @Override
+    public Optional<BookDto> getBookByGoogleId(BookDto bookDto){
+        List<String> response = new ArrayList<>();
+        Optional<Book> bookOptional = bookRepository.findByGoogleId(bookDto.getGoogleId());
+        if (bookOptional.isPresent()){
+            return Optional.of(new BookDto(bookOptional.get()));
+        }
+        return Optional.empty();
     }
 
     @Override
