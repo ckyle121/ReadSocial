@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class BookUIController {
-    @RequestMapping("/book/{bookId}")
-    public String getBookPage(@PathVariable Long bookId){
-        return "book-single";
+public class UserUIController {
+    @RequestMapping("/user/{userId}")
+    public String getBookPage(@PathVariable Long userId){
+        return "user-single";
     }
 }
