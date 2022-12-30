@@ -17,7 +17,7 @@ async function getReviewsByUser(userId){
             headers: headers
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => createReviewCards(data))
     .catch(err => console.error(err))
 }
 
