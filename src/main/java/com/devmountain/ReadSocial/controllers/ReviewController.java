@@ -31,12 +31,6 @@ public class ReviewController {
         System.out.println("Added Review");
     }
 
-//    @PostMapping("/")
-//    public void addBook(@RequestBody ReviewDto reviewDto){
-//
-//        reviewService.addReview(reviewDto);
-//    }
-
     @GetMapping("/user/{userId}")
     public List<ReviewDto> getReviewsByUser(@PathVariable Long userId){
         return reviewService.getAllReviewsByUserId(userId);
@@ -52,24 +46,13 @@ public class ReviewController {
         return reviewService.getReviewById(reviewId);
     }
 
-
-
-//    @PostMapping("/user/{userId}")
-//    public void addReviewToUser(@RequestBody ReviewDto reviewDto, @PathVariable Long userId){
-//        reviewService.addReviewToUser(reviewDto, userId);
-//    }
-//    @PostMapping("/book/{bookId}")
-//    public void addReviewToBook(@RequestBody ReviewDto reviewDto, @PathVariable Long bookId){
-//        reviewService.addReviewToBook(reviewDto, bookId);
-//    }
-
     @DeleteMapping("/{reviewId}")
     public void deleteReviewById(@PathVariable Long reviewId){
         reviewService.deleteReviewById(reviewId);
     }
 
-//    @PutMapping
-//    public void updateReview(@RequestBody ReviewDto reviewDto){
-//        reviewService.updateReviewById(reviewDto);
-//    }
+    @PutMapping
+    public void updateReview(@RequestBody ReviewDto reviewDto){
+        reviewService.updateReviewById(reviewDto);
+    }
 }

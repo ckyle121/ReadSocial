@@ -1,5 +1,5 @@
 // Get userId from URL
-var userId = window.location.pathname.split("/").pop()
+const userId = window.location.pathname.split("/").pop()
 
 //DOM elements
 const userReviewContainer = document.getElementById("user-reviews")
