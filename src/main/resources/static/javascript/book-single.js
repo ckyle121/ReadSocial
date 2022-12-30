@@ -1,7 +1,15 @@
+// Get bookId from URL
+var bookId = window.location.pathname.split("/").pop()
+
 // DOM elements
 const reviewDiv = document.getElementById('single-review-container');
 
 const baseUrl = "http://localhost:8080/api/v1/reviews/"
+const bookBaseUrl = "http://localhost:8080/api/v1/books/"
+
+const headers = {
+    'Content-Type': 'application/json'
+}
 
 // Get Reviews by Book Id
 async function getBookReviews(bookId) {

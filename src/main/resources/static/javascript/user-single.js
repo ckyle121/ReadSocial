@@ -1,7 +1,15 @@
+// Get userId from URL
+var userId = window.location.pathname.split("/").pop()
+
 //DOM elements
-const userReviewContainer = document.getElementById("user-reviews");
+const userReviewContainer = document.getElementById("user-reviews")
 
 const baseUrl = "http://localhost:8080/api/v1/reviews/"
+const bookBaseUrl = "http://localhost:8080/api/v1/books/"
+
+const headers = {
+    'Content-Type': 'application/json'
+}
 
 async function getReviewsByUser(userId){
     await fetch(`${baseUrl}user/${userId}`, {
