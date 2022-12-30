@@ -9,77 +9,49 @@ const bookBaseUrl = "http://localhost:8080/api/v1/books/"
 async function newFormHandler(event) {
   event.preventDefault();
     postBook();
-//  const bookId = currentBook.bookId;
-//
-//  await fetch(`${baseUrl}user/${userId}`, {
-//    method: "GET",
-//  })
-//    .then((response) => response.json())
-//    .then((result) => {
-//      const previousReviews = result.filter(
-//        (book) => book.bookId === bookId
-//      );
-//      if (previousReviews.length === 0) {
-//        postBook();
-//      } else {
-//        alert("You've already reviewed that book!");
-//      }
-//    });
 }
 
 async function postBook() {
-  const bookId = currentBook.bookId;
+  const googleId = currentBook.googleId;
   const title = currentBook.title;
   const poster = currentBook.poster;
-  const review_text = document.querySelector(
-    'textarea[name="post-text"]'
-  ).value;
-  const book_rating = document
-    .querySelector(".rating")
-    .querySelectorAll(".fas").length;
+  const review_text = document.querySelector('textarea[name="post-text"]').value;
+  const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
 
-    console.log(bookId);
-  const bookResponse = await fetch(`${bookBaseUrl}${bookId}`, {
-    method: "GET",
-  });
+  console.log(googleId);
+  console.log(title);
+  console.log(poster);
 
-  console.log("Hello");
-  // check to see if the book is in the database first
-  if (!bookResponse.ok) {
-    // if not, add it
-    const postNewBook = await fetch(`${bookBaseUrl}`, {
+  // add book to data base first
+  const postNewBook = await fetch(`${bookBaseUrl}`, {
       method: "POST",
       body: JSON.stringify({
-        bookId,
+        googleId,
         title,
         poster,
       }),
       headers: {
         "Content-Type": "application/json",
       },
-    });
-  }
+   })
+   .catch(err => console.log(err.message))
 
-  console.log(bookResponse);
+   const postNewReview = await fetch(`${baseUrl}`, {
+             method: "POST",
+             body: JSON.stringify({
+                googleId,
+                book_rating,
+                review_text,
+                userId
+             }),
+             headers: {
+               "Content-Type": "application/json",
+             },
+          })
+  .catch(err => console.error(err.message))
 
-   const review = await fetch(`${baseUrl}`, {
-      method: "POST",
-      body: JSON.stringify({
-         bookId,
-         book_rating,
-         review_text,
-         userId
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-   });
-
-  if (review.ok) {
-  console.log(review);
-    //document.location.replace("http://localhost:8080/dashboard.html");
-  } else {
-    alert(review.statusText);
+  if (postNewReview.ok){
+     document.location.replace("http://localhost:8080/dashboard.html");
   }
 }
 
@@ -94,11 +66,11 @@ document.addEventListener("click", function (e) {
       e.target.parentElement.parentElement.childNodes[1].textContent;
     document.querySelector("#bookReviewLabel").innerText = title;
     // get the book id
-    const bookId =
-      parseInt(e.target.parentElement.parentElement.getAttribute("data-id"))
+    const googleId =
+      e.target.parentElement.parentElement.getAttribute("data-id")
     document
       .querySelector("#bookReviewLabel")
-      .setAttribute("data-id", bookId);
+      .setAttribute("data-id", googleId);
     // get the poster source
     const posterLength =
       e.target.parentElement.parentElement.getAttribute("style").length;
@@ -107,6 +79,6 @@ document.addEventListener("click", function (e) {
       .substr(23, posterLength - 25);
     document.querySelector("#book-poster").setAttribute("src", poster);
 
-    currentBook = { title: title, bookId: bookId, poster: poster };
+    currentBook = { title: title, googleId: googleId, poster: poster };
   }
 });

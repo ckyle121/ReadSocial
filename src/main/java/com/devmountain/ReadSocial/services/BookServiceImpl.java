@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,11 +26,20 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Object getBookById(Long bookId) {
-        Optional<Book> bookOptional = bookRepository.findById(bookId);
+    public Optional<BookDto> getBookByGoogleId(String googleId){
+        Optional<Book> bookOptional = bookRepository.findByGoogleId(googleId);
         if (bookOptional.isPresent()){
             return Optional.of(new BookDto(bookOptional.get()));
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST);
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<BookDto> getBookById(Long bookId) {
+        Optional<Book> bookOptional = bookRepository.findById(bookId);
+        if(bookOptional.isPresent()){
+            return Optional.of(new BookDto(bookOptional.get()));
+        }
+        return Optional.empty();
     }
 }

@@ -3,9 +3,7 @@ package com.devmountain.ReadSocial.entities;
 import com.devmountain.ReadSocial.dtos.UserDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -13,7 +11,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-@Data
+//@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -27,7 +27,7 @@ public class User {
     @Column
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",  fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST})
     @JsonManagedReference
     private Set<Review> reviewSet = new HashSet<>();
 

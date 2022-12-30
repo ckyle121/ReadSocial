@@ -1,555 +1,560 @@
 /* ========Everything=========== */
 * {
-  box-sizing: border-box;
-}
-
-body,
-html,
-.new-post-form {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  color: #025259;
-  background: -webkit-linear-gradient(
-    top,
-    rgba(0, 113, 114, 1) 0%,
-    rgba(2, 82, 89, 1) 100%
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-x: hidden;
-}
-
-main {
-  flex: 1;
-  padding: 2% 4%;
-}
-
-header {
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1%;
-  font-size: 1.75rem;
-}
-
-footer {
-    position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  bottom: 0;
-  font-size: 110%;
-  color: #F29325;
-
-}
-
-/* =========================== */
-
-/* ========Basics============= */
-
-
-h6,
-h3,
-h4,
-h2,
-h5,
-.yellow {
-  color: #F29325;
-}
-
-h2{
-font-weight: bold;
-padding-top: 20px;
-}
-
-a {
-  text-decoration: none;
-  color: #F29325;
-  font-weight: bold;
-  transition: color 0.1s;
-}
-
-a:hover {
-  color: #D94F04;
-}
-
-button {
-  background-color:#D94F04;
-  border: 0;
-  padding: 1%;
-  color: white;
-  font-weight: bold;
-  transition: background-color 0.1s;
-  cursor: pointer;
-  border-radius: 5px;
-}
-*/ button:hover {
-  background-color: #D94F04;
-}
-
-textarea,
-input {
-  padding: 0.5%;
-  border-radius: 5px;
-  border: 1px solid black;
-  color: #025259;
-  font-size: 20px;
-  font-weight: bolder;
-}
-
-textarea:focus,
-input:focus {
-  outline: none;
-  border: 1px solid #f7d200;
-}
-
-textarea {
-  min-width: 40%;
-  min-height: 100px;
-  font-size: 14px;
-}
-
-form > div {
-  margin-bottom: 2%;
-}
-
-form label {
-padding-top: 20px;
-  display: block;
-  font-weight: 800;
-}
-
-/* =========================== */
-
-.post-list {
-  margin: 0.25rem;
-  padding: 0;
-  list-style: none;
-}
-
-.wrapper {
-  width: 100%;
-  min-height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ========Home Page Banner====== */
-
-h1 {
-  text-align: center;
-  color: #D94F04;
-  text-transform: uppercase;
-  font-family: "Raleway", cursive;
-  position: relative;
-  background-color: #D94F04;
-  padding: 20px;
-  letter-spacing: 30px;
-  animation: comein 1.5s 1 ease-in-out forwards;
-}
-
-h1:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -50px;
-  width: 600px;
-  margin-left: -300px;
-  margin-top: -220px;
-  height: 600px;
-  background: radial-gradient(50% 50%, ellipse closest-side, #444, black);
-  z-index: -1;
-}
-
-h1:after {
-  content: "";
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  left: -1px;
-  bottom: -1px;
-  z-index: -1;
-  background: linear-gradient(left, black, #eee, black);
-}
-
-@keyframes comein {
-  0% {
-    letter-spacing: 100px;
-    color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
   }
-  70% {
-    letter-spacing: 20px;
+
+  body,
+  html,
+  .new-post-form {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    color: #025259;
+    background: -webkit-linear-gradient(
+      top,
+      rgba(0, 113, 114, 1) 0%,
+      rgba(2, 82, 89, 1) 100%
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
   }
-  100% {
-    letter-spacing: 30px;
-    color: rgba(255, 255, 255, 1);
+
+  main {
+    flex: 1;
+    padding: 2% 4%;
   }
-}
 
-/* =========================== */
-
-/* ========Modals========= */
-
-.modal-text-style {
-  font-weight: bold;
-  color: #025259;
-}
-
-.modal-text-bold {
-  font-weight: bolder;
-  color: #025259;
-}
-
-/* =========================== */
-
-/* ====Posts/Reviews/Ratings==== */
-
-.delete-post-btn {
-  background-color: #d41414;
-}
-
-.post {
-  margin-bottom: 2%;
-  line-height: 150%;
-}
-
-.post .title span {
-  font-style: italic;
-  font-size: 90%;
-  color: #007172;
-}
-
-.modal-text-style {
-  font-weight: bold;
-  color:#025259;
-}
-
-.modal-text-bold {
-  font-weight: bolder;
-  color: #D94F04;
-}
-
-.review {
-  padding: 1%;
-  margin-bottom: 1%;
-}
-
-.review .meta {
-  font-size: 90%;
-  margin-bottom: 0.5%;
-  opacity: 0.6;
-}
-
-.new-post-form input {
-  width: 300px;
-}
-
-#bookList {
-  display: flex;
-  justify-content: center;
-}
-
-.rating__star {
-  cursor: pointer;
-  color: #FFD700;
-}
-
-.bookListSingleEl {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 40%;
-  margin: 10px;
-}
-
-.bookListSingleEl:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.bookListSingleEl img {
-  width: 100%;
-}
-
-.new-post-form img {
-  height: auto;
-  width: 100px;
-}
-
-.jumbotron {
-  height: 40vh;
-  /* top: -50; */
-}
-
-/* ============================= */
-/* =========Carousel============ */
-
-.carouselContainer {
-  position: relative;
-  width: 320px;
-  margin: 100px auto 0 auto;
-  perspective: 1000px;
-}
-
-.carousel {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  animation: rotate360 60s infinite forwards linear;
-}
-.carousel__face {
-  position: absolute;
-  width: 200px;
-  height: 150px;
-  top: 20px;
-  left: 10px;
-  right: 10px;
-  background-size: cover;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
-  display: flex;
-}
-
-#try-again span {
-  margin: auto;
-  font-size: 2rem;
-}
-
-.carousel__face:nth-child(1) {
-  transform: rotateY(0deg) translateZ(430px);
-}
-.carousel__face:nth-child(2) {
-  transform: rotateY(40deg) translateZ(430px);
-}
-.carousel__face:nth-child(3) {
-  transform: rotateY(80deg) translateZ(430px);
-}
-.carousel__face:nth-child(4) {
-  transform: rotateY(120deg) translateZ(430px);
-}
-.carousel__face:nth-child(5) {
-  transform: rotateY(160deg) translateZ(430px);
-}
-.carousel__face:nth-child(6) {
-  transform: rotateY(200deg) translateZ(430px);
-}
-.carousel__face:nth-child(7) {
-  transform: rotateY(240deg) translateZ(430px);
-}
-.carousel__face:nth-child(8) {
-  transform: rotateY(280deg) translateZ(430px);
-}
-.carousel__face:nth-child(9) {
-  transform: rotateY(320deg) translateZ(430px);
-}
-
-@keyframes rotate360 {
-  from {
-    transform: rotateY(0deg);
+  header {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1%;
+    font-size: 1.75rem;
   }
-  to {
-    transform: rotateY(-360deg);
+
+  footer {
+      position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    font-size: 110%;
+    color: #F29325;
+
   }
-}
 
-/* =========================== */
+  /* =========================== */
 
-/* ========Search Book Cards============ */
+  /* ========Basics============= */
 
-.UserCardContainer {
-  /* position: absolute; */
-  height: 300px;
-  width: 600px;
-  /* top: 60px; */
-  /* left: calc(50% - 300px); */
-  display: flex;
-  justify-content: center;
-}
 
-.userCard {
-  display: flex;
-  height: 280px;
-  width: 200px;
-  /* background-color: #17141d; */
-  border-radius: 10px;
-  box-shadow: -1rem 0 3rem #000;
-  /*   margin-left: -50px; */
-  transition: 0.4s ease-out;
-  position: relative;
-  left: 0px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  h6,
+  h3,
+  h4,
+  h2,
+  h5,
+  .yellow {
+    color: #F29325;
+  }
 
-.userCard:not(:first-child) {
-  margin-left: -50px;
-}
-
-.userCard:hover {
-  transform: translateY(-20px);
-  transition: 0.4s ease-out;
-}
-
-.userCard:hover ~ .userCard {
-  position: relative;
-  left: 50px;
-  transition: 0.4s ease-out;
-}
-
-.title {
-  color: white;
-  font-size: large;
-  font-weight: 200;
-  position: absolute;
-  left: 20px;
-  top: 15px;
-  background-color: #000;
-  opacity: 0.5;
-  padding: 3px;
-  border-radius: 5px;
-}
-
-.inner-text {
-  color: white;
-  font-weight: 300;
-  position: absolute;
-  left: 20px;
-  top: 55px;
-}
-
-.bottom-button {
-  position: absolute;
-  left: 20px;
-  bottom: 0px;
-}
-/* =============================== */
-
-/* ==========Single Post Reviews========= */
-
-.reviews {
-  padding: 15px;
-  max-width: 768px;
-  margin: 0 auto;
-  background-color: black;
-  color: #F29325;
-  border-radius: 10px;
-}
-
-/* =============================== */
-
-/* =========Posted Book Cards======== */
-
-.book-card {
-  max-width: 300px;
-  max-height: 400px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
-  margin: 10px auto;
-  cursor: pointer;
-}
-
-.book-card img {
-  transition: all 0.15s linear;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.book-card .book-title {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 25px;
+  h2{
   font-weight: bold;
-  color: #fff;
-  padding: 15px 20px;
-  background: linear-gradient(
-    140deg,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(2, 82, 89, 0) 50%
-  );
-  transition: all 0.15s linear;
-}
-
-.book-card .book-position {
-  position: absolute;
-  color: rgba(0, 113, 114, 0.4);
-  left: 30px;
-  top: 100px;
-  transition: all 0.15s linear;
-}
-
-.book-card .book-overview {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.4) 50%,
-    #007172
-  );
-  color: #025259;
-  padding: 50px 0px 20px 0px;
-  transition: all 0.15s linear;
-}
-
-.book-card .book-overview h3 {
-  font-weight: bold;
-}
-
-/* .book-card .book-overview p {
-  color: rgba(255, 255, 255, 0.7);
-} */
-
-.book-card:hover img {
-  filter: brightness(30%);
-}
-
-.book-card:hover .book-title {
-  padding-left: 25px;
   padding-top: 20px;
-}
+  }
 
-.book-card:hover .book-position {
-  left: 40px;
-}
+  a {
+    text-decoration: none;
+    color: #F29325;
+    font-weight: bold;
+    transition: color 0.1s;
+  }
 
-.book-card:hover .book-overview {
-  padding-bottom: 25px;
-}
+  a:hover {
+    color: #D94F04;
+  }
 
-/* =============================== */
+  button {
+    background-color:#D94F04;
+    border: 0;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.1s;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  */ button:hover {
+    background-color: #D94F04;
+  }
 
-/* MEDIA QUERIES  */
+  textarea,
+  input {
+    padding: 0.5%;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: #025259;
+    font-size: 20px;
+    font-weight: bolder;
+  }
 
-@media screen and (max-width: 768px) {
+  textarea:focus,
+  input:focus {
+    outline: none;
+    border: 1px solid #f7d200;
+  }
+
+  textarea {
+    min-width: 40%;
+    min-height: 100px;
+    font-size: 14px;
+  }
+
+  form > div {
+    margin-bottom: 2%;
+  }
+
+  form label {
+  padding-top: 20px;
+    display: block;
+    font-weight: 800;
+  }
+
+  /* =========================== */
+
+  .post-list {
+    margin: 0.25rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .wrapper {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ========Home Page Banner====== */
+
   h1 {
-    font-size: 36px;
-    letter-spacing: 10px;
-    animation: none;
-    overflow: hidden;
-  }
-  footer {
-    border-top: none;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 25px;
-    letter-spacing: 5px;
-    animation: none;
-    overflow: hidden;
+    text-align: center;
+    color: #D94F04;
+    text-transform: uppercase;
+    font-family: "Raleway", cursive;
+    position: relative;
+    background-color: #D94F04;
+    padding: 20px;
+    letter-spacing: 30px;
+    animation: comein 1.5s 1 ease-in-out forwards;
   }
 
-  footer {
-    border-top: none;
+  h1:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    width: 600px;
+    margin-left: -300px;
+    margin-top: -220px;
+    height: 600px;
+    background: radial-gradient(50% 50%, ellipse closest-side, #444, black);
+    z-index: -1;
   }
-}
+
+  h1:after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    left: -1px;
+    bottom: -1px;
+    z-index: -1;
+    background: linear-gradient(left, black, #eee, black);
+  }
+
+  @keyframes comein {
+    0% {
+      letter-spacing: 100px;
+      color: rgba(255, 255, 255, 0);
+    }
+    70% {
+      letter-spacing: 20px;
+    }
+    100% {
+      letter-spacing: 30px;
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  /* =========================== */
+
+  /* ========Modals========= */
+
+  .modal-text-style {
+    font-weight: bold;
+    color: #025259;
+  }
+
+  .modal-text-bold {
+    font-weight: bolder;
+    color: #025259;
+  }
+
+  /* =========================== */
+
+  /* ====Posts/Reviews/Ratings==== */
+
+  .delete-post-btn {
+    background-color: #d41414;
+  }
+
+  .post {
+    margin-bottom: 2%;
+    line-height: 150%;
+  }
+
+  .post .title span {
+    font-style: italic;
+    font-size: 90%;
+    color: #007172;
+  }
+
+  .modal-text-style {
+    font-weight: bold;
+    color:#025259;
+  }
+
+  .modal-text-bold {
+    font-weight: bolder;
+    color: #D94F04;
+  }
+
+  .review {
+    padding: 1%;
+    margin-bottom: 1%;
+  }
+
+  .review .meta {
+    font-size: 90%;
+    margin-bottom: 0.5%;
+    opacity: 0.6;
+  }
+
+  .new-post-form input {
+    width: 300px;
+  }
+
+  #bookList {
+    display: flex;
+    justify-content: center;
+  }
+
+  .rating__star {
+    cursor: pointer;
+    color: #FFD700;
+  }
+
+  .bookListSingleEl {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+    margin: 10px;
+  }
+
+  .bookListSingleEl:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .bookListSingleEl img {
+    width: 100%;
+  }
+
+  .new-post-form img {
+    height: auto;
+    width: 100px;
+  }
+
+  .jumbotron {
+    height: 40vh;
+    /* top: -50; */
+  }
+
+  /* ============================= */
+  /* =========Carousel============ */
+
+  .carouselContainer {
+    position: relative;
+    width: 320px;
+    margin: 100px auto 0 auto;
+    perspective: 1000px;
+  }
+
+  .carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate360 60s infinite forwards linear;
+  }
+  .carousel__face {
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    top: 20px;
+    left: 10px;
+    right: 10px;
+    background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+    display: flex;
+  }
+
+  #try-again span {
+    margin: auto;
+    font-size: 2rem;
+  }
+
+  .carousel__face:nth-child(1) {
+    transform: rotateY(0deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(2) {
+    transform: rotateY(40deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(3) {
+    transform: rotateY(80deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(4) {
+    transform: rotateY(120deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(5) {
+    transform: rotateY(160deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(6) {
+    transform: rotateY(200deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(7) {
+    transform: rotateY(240deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(8) {
+    transform: rotateY(280deg) translateZ(430px);
+  }
+  .carousel__face:nth-child(9) {
+    transform: rotateY(320deg) translateZ(430px);
+  }
+
+  @keyframes rotate360 {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(-360deg);
+    }
+  }
+
+  /* =========================== */
+
+  /* ========Search Book Cards============ */
+
+  .UserCardContainer {
+    /* position: absolute; */
+    height: 300px;
+    width: 600px;
+    /* top: 60px; */
+    /* left: calc(50% - 300px); */
+    display: flex;
+    justify-content: center;
+  }
+
+  .userCard {
+    display: flex;
+    height: 280px;
+    width: 200px;
+    /* background-color: #17141d; */
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #000;
+    /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .userCard:not(:first-child) {
+    margin-left: -50px;
+  }
+
+  .userCard:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+
+  .userCard:hover ~ .userCard {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+
+  .title {
+    color: white;
+    font-size: large;
+    font-weight: 200;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    background-color: #000;
+    opacity: 0.5;
+    padding: 3px;
+    border-radius: 5px;
+  }
+
+  .inner-text {
+    color: white;
+    font-weight: 300;
+    position: absolute;
+    left: 20px;
+    top: 55px;
+  }
+
+  .bottom-button {
+    position: absolute;
+    left: 20px;
+    bottom: 0px;
+  }
+  /* =============================== */
+
+  /* ==========Single Post Reviews========= */
+
+  .reviews {
+    padding: 15px;
+    max-width: 768px;
+    margin: 0 auto;
+    background-color: black;
+    color: #F29325;
+    border-radius: 10px;
+  }
+
+  /* =============================== */
+
+    /* =========Posted Book Cards======== */
+
+    .book-card {
+      max-width: 300px;
+      max-height: 400px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      margin: 10px auto;
+      cursor: pointer;
+    }
+
+    .book-card img {
+      transition: all 0.15s linear;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    .book-card .book-title {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 25px;
+      font-weight: bold;
+      color: #fff;
+      padding: 15px 20px;
+      background: linear-gradient(
+        160deg,
+        rgba(0, 0, 0, 0.4) 90%,
+        rgba(2, 82, 89, 0) 50%
+      );
+      transition: all 0.15s linear;
+      text-overflow: ellipse;
+      overflow:hidden;
+      white-space: nowrap;
+    }
+
+    .book-card .book-position {
+      position: absolute;
+      color: rgba(0, 113, 114, 0.4);
+      left: 30px;
+      top: 100px;
+      transition: all 0.15s linear;
+    }
+
+    .book-card .book-overview {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.25) 15%,
+        black
+      );
+      transition: all 0.15s linear;
+    }
+
+    .book-card .book-overview  {
+      font-weight: bold;
+      justify-content: center;
+    }
+
+    .book-links{
+      font-weight: bold;
+      color: #F29325;
+      text-decoration: none;
+      text-align: center;
+      padding-left: 10px;
+    }
+
+    .book-card:hover img {
+      filter: brightness(30%);
+    }
+
+    .book-card:hover .book-title {
+      padding-left: 25px;
+      padding-top: 20px;
+    }
+
+    .book-card:hover .book-position {
+      left: 40px;
+    }
+
+    .book-card:hover .book-overview {
+      padding-bottom: 25px;
+    }
+
+    /* =============================== */
+
+    /* MEDIA QUERIES  */
+
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+        letter-spacing: 10px;
+        animation: none;
+        overflow: hidden;
+      }
+      footer {
+        border-top: none;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 25px;
+        letter-spacing: 5px;
+        animation: none;
+        overflow: hidden;
+      }
+
+      footer {
+        border-top: none;
+      }
+    }

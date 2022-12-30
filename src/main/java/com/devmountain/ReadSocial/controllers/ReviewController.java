@@ -27,7 +27,7 @@ public class ReviewController {
         ReviewDto reviewDto = new ReviewDto();
         reviewDto.setBook_rating(createData.book_rating);
         reviewDto.setReview_text(createData.review_text);
-        reviewService.addReview(reviewDto, createData.userId, createData.bookId);
+        reviewService.addReview(reviewDto, createData.userId, createData.googleId);
         System.out.println("Added Review");
     }
 

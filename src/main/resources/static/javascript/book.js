@@ -19,27 +19,20 @@ async function getBookReviews(bookId) {
 const createBookCards = (array) => {
     
     reviewDiv.innerHTML = ''
-    array.forEach(obj => {
+    array.forEach(review => {
         let reviewCard = document.createElement("div")
         reviewCard.classList.add("reviews mt-3")
         reviewCard.innerHTML = `
            <div class="d-flex inline justify-content-between">
-
-             <p><a
-                 href="/users/{review.user.userId}}"
-               >@{$obj.user.username}}</a></p>
+            <p><a href="/users/{review.user.userId}">@{$review.userDto.username}</a></p>
 
              <div class="ratebox text-center">
-                <div onload=times({$obj.book_rating}>
+                <div onload=times({$review.book_rating}>
              </div>
-
-//             <p class="d-flex justify-content-end review-text">{{format_date
-//                 comment.created_at
-//               }}</p>
 
            </div>
 
-           <p class="review-text p-4">{$obj.review_text}}</p>
+           <p class="review-text p-4">{$review.review_text}}</p>
         `
         reviewDiv.append(reviewCard);
     })
