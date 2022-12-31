@@ -11,7 +11,7 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-// Get Reviews by Book Id
+// Get Reviews by bookId
 async function getBookReviews(bookId) {
     await fetch(`${baseUrl}book/${bookId}`, {
         method: "GET",
@@ -23,7 +23,6 @@ async function getBookReviews(bookId) {
 }
 
 // Create Review Cards
-
 const createBookCards = (array) => {
     
     reviewDiv.innerHTML = ''

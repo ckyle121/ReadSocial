@@ -2,7 +2,7 @@
 const userId = window.location.pathname.split("/").pop()
 
 //DOM elements
-const userReviewContainer = document.getElementById("user-reviews")
+const userReviewDiv = document.getElementById("user-reviews")
 
 const baseUrl = "http://localhost:8080/api/v1/reviews/"
 const bookBaseUrl = "http://localhost:8080/api/v1/books/"
@@ -11,6 +11,7 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
+// Get Reviews by userId
 async function getReviewsByUser(userId){
     await fetch(`${baseUrl}user/${userId}`, {
     method: "GET",
@@ -21,32 +22,41 @@ async function getReviewsByUser(userId){
     .catch(err => console.error(err))
 }
 
+// Create Review Cards
 const createReviewCards = (array) => {
-    userReviewContainer.innerHTML = ''
+
+    let name = document.createElement("h2")
+    name.classList.add("text-center", "display-4")
+    name.innerHTML = `@${array[0].userDto.username}'s Book Reviews`
+    userReviewDiv.appendChild(name)
+
+    let reviewDivContainer = document.createElement("div")
+    reviewDivContainer.classList.add("container")
+
     array.forEach(book => {
         let reviewCard = document.createElement("div")
-        reviewCard.classList.add("col-md-4")
+        reviewCard.classList.add("post-list", "row")
         reviewCard.innerHTML = `
-                          <div class="book-card">
-                            <img
-                              src=${book.bookDto.poster}
-                              class="img img-responsive"
-                            />
-                            <div class="book-title">${book.bookDto.title}</div>
-                            <div class="book-position"></div>
-                            <div class="book-overview">
-                              <div class="book-overview">
-                                <div class="row text-center">
-                                  <div class="col-xs-4">
-                                    <h3><a href="" class="book-links">See More Reviews</a></h3>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+              <div class="col-md-4">
+                <div class="book-card"><img
+                    src="${book.bookDto.poster}"
+                    class="img img-responsive"
+                  />
+                  <div class="book-title">${book.bookDto.title}</div>
+                  <div class="book-overview">
+                    <div class="book-overview">
+                      <div class="row text-center">
+                        <div class="col-xs-4">
+                          <h3><a href="http://localhost:8080/book/${book.bookDto.id}">See More Reviews</a></h3>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
         `
-        userReviewContainer.append(reviewCard);
+        reviewDivContainer.appendChild(reviewCard);
+        userReviewDiv.appendChild(reviewDivContainer);
     })
 }
 
