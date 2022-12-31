@@ -27,23 +27,35 @@ async function getBookReviews(bookId) {
 const createBookCards = (array) => {
     
     reviewDiv.innerHTML = ''
-    array.forEach(review => {
+
+    let titleDiv = document.createElement("div")
+    titleDiv.innerHTML = `
+        <h2 class="text-center display-4" id="currentMovieTitle">${array[0].bookDto.title}</h2>
+        <div class="average-rate text-center mb-2"></div>
+        <div class="d-flex justify-content-center">
+          <img src="${array[0].bookDto.poster}" class="w-25 h-30 mb-2" id="currentMoviePoster" />
+        </div>
+    `
+
+    reviewDiv.appendChild(titleDiv);
+
+    for (let i = 0; i < array.length; i++){
         let reviewCard = document.createElement("div")
-        reviewCard.classList.add("reviews mt-3")
+        reviewCard.classList.add("reviews", "mt-3")
         reviewCard.innerHTML = `
            <div class="d-flex inline justify-content-between">
-            <p><a href="/users/{review.user.userId}">@{$review.userDto.username}</a></p>
+            <p><a href="http://localhost:8080/user/${array[i].userDto.id}">@${array[i].userDto.username}</a></p>
 
              <div class="ratebox text-center">
-                <div onload=times({$review.book_rating}>
+                <div onload=times(${array[i].book_rating})>
              </div>
 
            </div>
 
-           <p class="review-text p-4">{$review.review_text}}</p>
+           <p class="review-text p-4">${array[i].review_text}</p>
         `
-        reviewDiv.append(reviewCard);
-    })
+        reviewDiv.appendChild(reviewCard);
+    }
 }
 
 function times(n){
@@ -55,3 +67,7 @@ function times(n){
     }
     return starDiv
 }
+
+
+// call function to display reviews
+getBookReviews(bookId);
