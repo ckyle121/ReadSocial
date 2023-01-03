@@ -19,26 +19,26 @@ async function getReviews() {
 
 const createBookCards = (array) => {
     reviewContainer.innerHTML = ''
-    array.forEach(obj => {
+    array.forEach(review => {
         let bookCard = document.createElement("div")
         bookCard.classList.add("col-md-4")
         bookCard.innerHTML = `
               <div class="book-card"><img
-                  src="{$obj.book.poster}"
+                  src="${review.bookDto.poster}"
                   class="img img-responsive"
                 />
-                <div class="book-title">{$obj.book.title}}</div>
-                <div class="book-position"><a>{{#times book_rating}}
-                      <i class="fas fa-star"></i>
-                    {{/times}}</a>
+                <div class="book-title">${review.bookDto.title}</div>
+//                <div class="book-position"><a>{{#times book_rating}}
+//                      <i class="fas fa-star"></i>
+//                    {{/times}}</a>
                 <div class="book-overview">
                   <div class="book-overview">
                     <div class="row text-center">
                       <div class="col-xs-4">
-                        <h3><a href="/users/{$obj.user.userId}">@{$obj.user.username}</a></h3>
+                        <h3><a href="./user/${review.userDto.id}">@${review.userDto.username}</a></h3>
                       </div>
                       <div class="col-xs-4">
-                        <h3><a href="/book/{$bookId}">See More Reviews</a></h3>
+                        <h3><a href="./book/${review.bookDto.id}">See More Reviews</a></h3>
                       </div>
                     </div>
                   </div>
@@ -48,3 +48,6 @@ const createBookCards = (array) => {
         reviewContainer.append(bookCard);
     })
 }
+
+// call function to get all reviews
+getReviews()

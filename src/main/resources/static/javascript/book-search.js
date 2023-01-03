@@ -44,7 +44,6 @@ function showBooks(books) {
   //  for loop for top 5 books of the search
   let temp = "";
   for (let i = 0; i < 5; i++) {
-
     temp += `
     <div class="userCard" data-id=${books.items[i].id} style= "background-image: url('${books.items[i].volumeInfo.imageLinks.thumbnail}')">
       <h3 class="title book-name">${books.items[i].volumeInfo.title}</h3>
