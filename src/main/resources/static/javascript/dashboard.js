@@ -41,7 +41,7 @@ const createReviewCards = (array) => {
                                     <h3><a href="./book/${book.bookDto.id}" class="book-links">See More Reviews</a></h3>
                                   </div>
                                   <div class="col-xs-4">
-                                    <h3><a data-bs-toggle="modal" data-bs-target="#editReview" class="book-links">Edit Review</a></h3>
+                                    <h3><a href="./review/${book.id}" class="book-links">Edit Review</a></h3>
                                   </div>
                                 </div>
                               </div>

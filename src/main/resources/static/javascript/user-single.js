@@ -22,6 +22,17 @@ async function getReviewsByUser(userId){
     .catch(err => console.error(err))
 }
 
+// create Stars Function
+function createStars(rating){
+    const starDiv = document.getElementById("starDiv")
+
+    for (let i = 0; i < rating; i++){
+        let star = document.createElement("i")
+        star.classList.add("fas fa-star")
+        starDiv.appendChild(star)
+    }
+}
+
 // Create Review Cards
 const createReviewCards = (array) => {
 
@@ -43,11 +54,12 @@ const createReviewCards = (array) => {
                     class="img img-responsive"
                   />
                   <div class="book-title">${book.bookDto.title}</div>
+                  <div class="book-position" id="starDiv" onLoad=createStars(${book.book_rating})></div>
                   <div class="book-overview">
                     <div class="book-overview">
                       <div class="row text-center">
                         <div class="col-xs-4">
-                          <h3><a href="http://localhost:8080/book/${book.bookDto.id}">See More Reviews</a></h3>
+                          <h3><a href="../book/${book.bookDto.id}">See More Reviews</a></h3>
                         </div>
                       </div>
                     </div>
