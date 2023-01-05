@@ -86,9 +86,13 @@ public class ReviewServiceImpl implements ReviewService {
     public void updateReviewById(ReviewDto reviewDto) {
         Optional<Review> reviewOptional = reviewRepository.findById(reviewDto.getId());
         reviewOptional.ifPresent(review -> {
-            review.setReview_text(review.getReview_text());
-            review.setBook_rating(review.getBook_rating());
-            reviewRepository.saveAndFlush(review);
+            Review reviewObj = new Review(reviewDto);
+            reviewObj.setId(review.getId());
+            reviewObj.setUser(review.getUser());
+            reviewObj.setBook(review.getBook());
+//            \review.setReview_text(review.getReview_text());
+//            review.setBook_rating(review.getBook_rating());
+            reviewRepository.saveAndFlush(reviewObj);
         });
     }
 

@@ -51,8 +51,8 @@ public class ReviewController {
         reviewService.deleteReviewById(reviewId);
     }
 
-    @PutMapping
-    public void updateReview(@RequestBody ReviewDto reviewDto){
+    @PutMapping("/{reviewId}")
+    public void updateReview(@PathVariable Long reviewId, @RequestBody ReviewDto reviewDto){
         reviewService.updateReviewById(reviewDto);
     }
 }

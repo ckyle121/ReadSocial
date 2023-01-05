@@ -1,6 +1,10 @@
 // Get reviewId from URL
 const reviewId = window.location.pathname.split("/").pop();
 
+// Get userId from cookies
+const cookieArr = document.cookie.split("=")
+const userId = parseInt(cookieArr[1]);
+
 // DOM elements
 const editReviewContainer = document.getElementById("editReviewContainer");
 
@@ -32,60 +36,48 @@ const createEditCard = (review) => {
         <div class="d-flex justify-content-center">
             <img src="${review.bookDto.poster}" class="w-25 h-30 mb-2" />
         </div>
-
-        <div class="d-flex justify-content-center">
-            <div class="rating" name="rating">
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-            </div>
-        </div>
-
-
-
-        <div class="d-flex justify-content-center">
-      <textarea
-         id="review-text"
-         class="mb-2"
-        >${review.review_text}</textarea>
-        </div>
     `
     editReviewContainer.appendChild(reviewCard);
 
 }
 
-//// Edit Review by Id
-//
-//async function editFormHandler(event) {
-//  event.preventDefault();
-//
-//  const review_text = document.querySelector("#comment-text").value.trim();
-//  const book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
-//
-//  const response = await fetch(`${baseUrl}${reviewId}`, {
-//    method: "PUT",
-//    body: JSON.stringify({
-//      review_text,
-//      book_rating,
-//    }),
-//    headers: {
-//      "Content-Type": "application/json",
-//    },
-//  });
-//
-//  if (response.ok) {
-//    document.location.replace("../dashboard.html");
-//  } else {
-//    alert(response.statusText);
-//  }
-//}
-//
-//document
-//  .querySelector(".save-post-btn")
-//  .addEventListener("click", editFormHandler);
-//
+// Edit Review by Id
+
+async function editFormHandler(event) {
+  event.preventDefault();
+
+    const getRequest = await fetch(`${baseUrl}${reviewId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+        .then(getRequest => getRequest.json())
+
+    getRequest.review_text = document.querySelector("#review-text").value.trim();
+    getRequest.book_rating = document.querySelector(".rating").querySelectorAll(".fas").length;
+
+  const response = await fetch(`${baseUrl}${reviewId}`, {
+    method: "PUT",
+    body: JSON.stringify(
+        getRequest
+    ),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    document.location.replace("../dashboard.html");
+  } else {
+    alert(response.statusText);
+  }
+}
+
+document
+  .querySelector(".save-post-btn")
+  .addEventListener("click", editFormHandler);
+
 // Delete Review by Id
 
 async function deleteFormHandler(event) {
