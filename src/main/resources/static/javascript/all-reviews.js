@@ -23,27 +23,27 @@ const createBookCards = (array) => {
         let bookCard = document.createElement("div")
         bookCard.classList.add("col-md-4")
         bookCard.innerHTML = `
-              <div class="book-card"><img
-                  src="${review.bookDto.poster}"
-                  class="img img-responsive"
-                />
-                <div class="book-title">${review.bookDto.title}</div>
-//                <div class="book-position"><a>{{#times book_rating}}
-//                      <i class="fas fa-star"></i>
-//                    {{/times}}</a>
-                <div class="book-overview">
-                  <div class="book-overview">
-                    <div class="row text-center">
-                      <div class="col-xs-4">
-                        <h3><a href="./user/${review.userDto.id}">@${review.userDto.username}</a></h3>
-                      </div>
-                      <div class="col-xs-4">
-                        <h3><a href="./book/${review.bookDto.id}">See More Reviews</a></h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <div class="book-card">
+                            <img
+                              src=${review.bookDto.poster}
+                              class="img img-responsive"
+                            />
+                            <div class="book-title">${review.bookDto.title}</div>
+                            <div class="book-position"></div>
+                            <div class="book-overview">
+                              <div class="book-overview">
+                                <div class="row text-center">
+                                  <div class="col-xs-4">
+                                    <h3><a href="./user/${review.userDto.id}" class="book-links">@${review.userDto.username}</a></h3>
+                                  </div>
+                                  <div class="col-xs-4">
+                                    <h3><a href="./book/${review.bookDto.id}" class="book-links">See More Reviews</a></h3>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
         `
         reviewContainer.append(bookCard);
     })
