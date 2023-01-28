@@ -14,3 +14,10 @@ The app follows the Model-View-Controller (MVC) paradigm in its architectural st
  * JavaScript
  * HTML/CSS
  * PostgresSQL
+
+
+## Screenshots of Website:
+
+#### Homepage
+
+![image](https://user-images.githubusercontent.com/75647359/215276738-975723c7-1cdc-4de3-8276-3a9ab2eaff2d.png)
