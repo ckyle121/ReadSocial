@@ -10,7 +10,7 @@ The app follows the Model-View-Controller (MVC) paradigm in its architectural st
 
 ## Technologies Used:
  * Java
- * Springboot 
+ * Spring Boot 
  * JavaScript
  * HTML/CSS
  * PostgresSQL
